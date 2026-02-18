@@ -1,4 +1,3 @@
-<!-- Liberty Jukebox v1.0 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,13 +8,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,400;1,400;1,600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 
-/* ════════════════════════════════════════
-   RESET
-════════════════════════════════════════ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  /* HIGH CONTRAST PALETTE */
   --bg:         #000000;
   --surface:    #1e1e1a;
   --surface2:   #2a2a24;
@@ -30,11 +25,9 @@
   --red-glow:   rgba(255,61,46,0.25);
   --red-dim:    rgba(255,61,46,0.12);
   --gold:       #e8a820;
-
   --left-w: 360px;
   --player-h: 76px;
   --topbar-h: 48px;
-  --ticker-h: 30px;
   --tabs-h: 52px;
 }
 
@@ -48,7 +41,6 @@ body {
   height: 100vh;
 }
 
-/* noise layer */
 body::before {
   content: '';
   position: fixed;
@@ -58,10 +50,6 @@ body::before {
   pointer-events: none;
   z-index: 9998;
 }
-
-/* ════════════════════════════════════════
-   DESKTOP LAYOUT  (≥769px)
-════════════════════════════════════════ */
 
 /* ── Top bar ── */
 .topbar {
@@ -84,16 +72,9 @@ body::before {
   color: var(--white);
 }
 
-.topbar-logo em {
-  color: var(--red);
-  font-style: normal;
-}
+.topbar-logo em { color: var(--red); font-style: normal; }
 
-.topbar-nav {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-}
+.topbar-nav { display: flex; align-items: center; gap: 0.25rem; }
 
 .topbar-btn {
   background: none;
@@ -111,7 +92,7 @@ body::before {
 
 .topbar-btn:hover { color: var(--white); background: var(--surface2); }
 
-.topbar-submit {
+.topbar-contact {
   background: var(--red);
   color: var(--white);
   border: none;
@@ -126,58 +107,18 @@ body::before {
   transition: background 0.15s;
 }
 
-.topbar-submit:hover { background: #ff5544; }
+.topbar-contact:hover { background: #ff5544; }
 
-/* ── Ticker ── */
-.ticker {
-  position: fixed;
-  top: var(--topbar-h);
-  left: 0; right: 0;
-  height: var(--ticker-h);
-  background: var(--red);
-  overflow: hidden;
-  z-index: 900;
-  display: flex;
-  align-items: center;
-}
-
-.ticker-track {
-  display: flex;
-  white-space: nowrap;
-  animation: tickroll 38s linear infinite;
-}
-
-@keyframes tickroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
-.t-item {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 0.78rem;
-  letter-spacing: 0.22em;
-  color: rgba(255,255,255,0.92);
-  padding: 0 1.75rem;
-}
-
-.t-sep {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 0.78rem;
-  color: rgba(255,255,255,0.35);
-}
-
-/* ── Main area ── */
+/* ── Shell ── */
 .shell {
   position: fixed;
-  top: calc(var(--topbar-h) + var(--ticker-h));
+  top: var(--topbar-h);
   left: 0; right: 0;
   bottom: 0;
   display: flex;
 }
 
-/* ════════════════════════════════════════
-   LEFT PANEL
-════════════════════════════════════════ */
+/* ── Left Panel ── */
 .left {
   width: var(--left-w);
   min-width: var(--left-w);
@@ -199,7 +140,6 @@ body::before {
 }
 .left-scroll::-webkit-scrollbar { display: none; }
 
-/* Brand */
 .brand { margin-bottom: 1.75rem; }
 
 .brand-pill {
@@ -220,10 +160,7 @@ body::before {
   animation: blink 1.8s ease-in-out infinite;
 }
 
-@keyframes blink {
-  0%,100% { opacity: 1; }
-  50% { opacity: 0.2; }
-}
+@keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0.2; } }
 
 .brand-pill-text {
   font-size: 0.55rem;
@@ -268,11 +205,7 @@ body::before {
   gap: 1.25rem;
 }
 
-.vinyl-stage {
-  position: relative;
-  width: 150px;
-  height: 150px;
-}
+.vinyl-stage { position: relative; width: 150px; height: 150px; }
 
 .vinyl-glow {
   position: absolute;
@@ -286,53 +219,36 @@ body::before {
 .vinyl-stage.playing .vinyl-glow { opacity: 1; }
 
 .record {
-  width: 150px;
-  height: 150px;
+  width: 150px; height: 150px;
   border-radius: 50%;
   background:
     radial-gradient(circle at center, #111 0%, #111 20%, transparent 20.5%),
-    repeating-radial-gradient(circle at center,
-      #0a0a0a 0px, #0a0a0a 1px,
-      #141414 1px, #141414 4px
-    );
-  box-shadow:
-    0 2px 20px rgba(0,0,0,0.9),
-    inset 0 0 0 1px rgba(255,255,255,0.06);
+    repeating-radial-gradient(circle at center, #0a0a0a 0px, #0a0a0a 1px, #141414 1px, #141414 4px);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.9), inset 0 0 0 1px rgba(255,255,255,0.06);
   animation: spin 3.5s linear infinite paused;
   position: relative;
 }
 
 .vinyl-stage.playing .record { animation-play-state: running; }
 
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
+@keyframes spin { to { transform: rotate(360deg); } }
 
 .record-label {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
 }
 
 .record-label-inner {
-  width: 44px;
-  height: 44px;
+  width: 44px; height: 44px;
   border-radius: 50%;
   background: var(--red);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
   animation: counter-spin 3.5s linear infinite paused;
 }
 
 .vinyl-stage.playing .record-label-inner { animation-play-state: running; }
 
-@keyframes counter-spin {
-  to { transform: rotate(-360deg); }
-}
+@keyframes counter-spin { to { transform: rotate(-360deg); } }
 
 .label-text {
   font-family: 'Bebas Neue', sans-serif;
@@ -342,11 +258,8 @@ body::before {
   line-height: 1.1;
 }
 
-/* Tonearm */
 .arm {
-  position: absolute;
-  top: 5px;
-  right: -8px;
+  position: absolute; top: 5px; right: -8px;
   transform-origin: 100% 0%;
   transform: rotate(-28deg);
   transition: transform 0.9s cubic-bezier(0.4,0,0.2,1);
@@ -356,18 +269,14 @@ body::before {
 .vinyl-stage.playing .arm { transform: rotate(-12deg); }
 
 .arm-line {
-  width: 3px;
-  height: 62px;
+  width: 3px; height: 62px;
   background: linear-gradient(to bottom, #d0c8a8, #8a8070);
   border-radius: 2px;
-  position: relative;
-  left: 5px;
-  top: 8px;
+  position: relative; left: 5px; top: 8px;
 }
 
 .arm-pivot {
-  position: absolute;
-  top: 0; right: 0;
+  position: absolute; top: 0; right: 0;
   width: 14px; height: 14px;
   border-radius: 50%;
   background: var(--surface3);
@@ -375,16 +284,13 @@ body::before {
 }
 
 .arm-head {
-  position: absolute;
-  bottom: -4px;
-  left: 3px;
+  position: absolute; bottom: -4px; left: 3px;
   width: 8px; height: 8px;
   background: var(--cream);
   border-radius: 1px;
   transform: rotate(45deg);
 }
 
-/* Now playing */
 .now-playing { text-align: center; width: 100%; }
 
 .np-label {
@@ -415,12 +321,7 @@ body::before {
 /* ── Controls ── */
 .controls { margin-bottom: 1.5rem; }
 
-.progress {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  margin-bottom: 1rem;
-}
+.progress { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1rem; }
 
 .prog-t {
   font-size: 0.6rem;
@@ -430,8 +331,7 @@ body::before {
 }
 
 .prog-track {
-  flex: 1;
-  height: 4px;
+  flex: 1; height: 4px;
   background: var(--surface3);
   border-radius: 2px;
   cursor: pointer;
@@ -442,8 +342,9 @@ body::before {
   height: 100%;
   background: var(--red);
   border-radius: 2px;
-  width: 38%;
+  width: 0%;
   position: relative;
+  transition: width 0.2s linear;
 }
 
 .prog-fill::after {
@@ -457,22 +358,13 @@ body::before {
   box-shadow: 0 0 0 2px var(--red);
 }
 
-.ctrl-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.25rem;
-}
+.ctrl-row { display: flex; align-items: center; justify-content: center; gap: 1.25rem; }
 
 .ctrl-btn {
-  background: none;
-  border: none;
+  background: none; border: none;
   color: var(--cream2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.3rem;
-  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  padding: 0.3rem; cursor: pointer;
   transition: color 0.15s;
   border-radius: 3px;
 }
@@ -482,37 +374,54 @@ body::before {
 .ctrl-play {
   width: 54px; height: 54px;
   background: var(--red);
-  border: none;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  cursor: pointer;
+  border: none; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: white; cursor: pointer;
   box-shadow: 0 4px 24px var(--red-glow);
   transition: transform 0.12s, box-shadow 0.15s;
 }
 
-.ctrl-play:hover {
-  transform: scale(1.07);
-  box-shadow: 0 6px 32px rgba(255,61,46,0.5);
+.ctrl-play:hover { transform: scale(1.07); box-shadow: 0 6px 32px rgba(255,61,46,0.5); }
+
+.vol-row {
+  display: flex; align-items: center; justify-content: center;
+  gap: 0.5rem; margin-top: 0.75rem;
+}
+
+.vol-icon { color: var(--muted); display: flex; align-items: center; }
+
+.vol-slider {
+  -webkit-appearance: none; appearance: none;
+  width: 80px; height: 3px;
+  background: var(--surface3);
+  border-radius: 2px; outline: none; cursor: pointer;
+}
+
+.vol-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 10px; height: 10px;
+  background: var(--cream);
+  border-radius: 50%; cursor: pointer;
+}
+
+.vol-slider::-moz-range-thumb {
+  width: 10px; height: 10px;
+  background: var(--cream);
+  border-radius: 50%; border: none; cursor: pointer;
 }
 
 /* ── Stats ── */
 .left-stats {
   border-top: 1px solid var(--border2);
   padding-top: 1.25rem;
-  display: flex;
-  gap: 1.5rem;
+  display: flex; gap: 1.5rem;
 }
 
 .stat { display: flex; flex-direction: column; gap: 0.1rem; }
 
 .stat-n {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 2rem;
-  color: var(--white);
-  line-height: 1;
+  font-size: 2rem; color: var(--white); line-height: 1;
 }
 
 .stat-l {
@@ -522,35 +431,27 @@ body::before {
   color: var(--muted);
 }
 
-/* ════════════════════════════════════════
-   RIGHT PANEL
-════════════════════════════════════════ */
+/* ── Right Panel ── */
 .right {
   flex: 1;
-  display: flex;
-  flex-direction: column;
+  display: flex; flex-direction: column;
   overflow: hidden;
   background: var(--bg);
 }
 
-/* Category tabs */
 .cat-tabs {
   height: var(--tabs-h);
   border-bottom: 1px solid var(--border2);
-  display: flex;
-  align-items: stretch;
-  padding: 0 1.5rem;
-  gap: 0;
-  overflow-x: auto;
-  scrollbar-width: none;
+  display: flex; align-items: stretch;
+  padding: 0 1.5rem; gap: 0;
+  overflow-x: auto; scrollbar-width: none;
   flex-shrink: 0;
   background: var(--surface);
 }
 .cat-tabs::-webkit-scrollbar { display: none; }
 
 .cat-tab {
-  background: none;
-  border: none;
+  background: none; border: none;
   border-bottom: 3px solid transparent;
   color: var(--muted);
   font-family: 'Bebas Neue', sans-serif;
@@ -561,17 +462,12 @@ body::before {
   white-space: nowrap;
   margin-bottom: -1px;
   transition: color 0.15s, border-color 0.15s;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
+  display: flex; align-items: center; gap: 0.4rem;
 }
 
 .cat-tab:hover { color: var(--cream); }
 
-.cat-tab.active {
-  color: var(--white);
-  border-bottom-color: var(--red);
-}
+.cat-tab.active { color: var(--white); border-bottom-color: var(--red); }
 
 .tab-n {
   font-family: 'JetBrains Mono', monospace;
@@ -580,30 +476,21 @@ body::before {
   letter-spacing: 0.05em;
 }
 
-/* Scrollable song list */
 .catalog-wrap {
-  flex: 1;
-  overflow-y: auto;
+  flex: 1; overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: var(--surface3) transparent;
 }
 .catalog-wrap::-webkit-scrollbar { width: 4px; }
-.catalog-wrap::-webkit-scrollbar-thumb {
-  background: var(--surface3);
-  border-radius: 2px;
-}
+.catalog-wrap::-webkit-scrollbar-thumb { background: var(--surface3); border-radius: 2px; }
 
-/* Category panels */
 .cat-panel { display: none; }
 .cat-panel.active { display: block; }
 
-/* Section header inside catalog */
 .sec-head {
   padding: 1.5rem 1.75rem 1rem;
   border-bottom: 1px solid var(--border);
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
+  display: flex; align-items: baseline; justify-content: space-between;
   gap: 1rem;
   background: var(--surface);
 }
@@ -634,7 +521,6 @@ body::before {
   padding: 0.9rem 1.75rem;
   border-bottom: 1px solid var(--border);
   cursor: pointer;
-  transition: background 0.12s;
   position: relative;
   opacity: 0;
   transform: translateX(8px);
@@ -644,10 +530,7 @@ body::before {
 .song-row.show { opacity: 1; transform: translateX(0); }
 .song-row:last-child { border-bottom: none; }
 .song-row:hover { background: var(--surface2); }
-
-.song-row.playing {
-  background: var(--surface);
-}
+.song-row.playing { background: var(--surface); }
 
 .song-row.playing::before {
   content: '';
@@ -657,25 +540,19 @@ body::before {
   background: var(--red);
 }
 
-/* Number box */
 .row-box {
   width: 48px; height: 48px;
   background: var(--surface2);
   border: 1px solid var(--border2);
   border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
   position: relative;
   transition: background 0.12s, border-color 0.12s;
 }
 
 .song-row:hover .row-box,
-.song-row.playing .row-box {
-  background: var(--red);
-  border-color: var(--red);
-}
+.song-row.playing .row-box { background: var(--red); border-color: var(--red); }
 
 .row-n {
   font-family: 'Bebas Neue', sans-serif;
@@ -688,27 +565,19 @@ body::before {
 .song-row.playing .row-n { opacity: 0; }
 
 .row-icon {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  opacity: 0;
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  color: white; opacity: 0;
   transition: opacity 0.12s;
 }
 
 .song-row:hover .row-icon { opacity: 1; }
 
-/* EQ bars */
 .row-eq {
-  position: absolute;
-  inset: 0;
+  position: absolute; inset: 0;
   display: none;
-  align-items: flex-end;
-  justify-content: center;
-  gap: 2px;
-  padding: 11px 13px;
+  align-items: flex-end; justify-content: center;
+  gap: 2px; padding: 11px 13px;
 }
 
 .song-row.playing .row-eq { display: flex; }
@@ -716,9 +585,7 @@ body::before {
 .song-row.playing:hover .row-icon { opacity: 1; }
 
 .eq {
-  width: 3px;
-  background: white;
-  border-radius: 1px;
+  width: 3px; background: white; border-radius: 1px;
   animation: eqpulse 0.65s ease-in-out infinite alternate;
 }
 .eq:nth-child(1) { height: 35%; animation-delay: 0s; }
@@ -726,12 +593,8 @@ body::before {
 .eq:nth-child(3) { height: 55%; animation-delay: 0.09s; }
 .eq:nth-child(4) { height: 75%; animation-delay: 0.27s; }
 
-@keyframes eqpulse {
-  from { transform: scaleY(0.2); }
-  to   { transform: scaleY(1); }
-}
+@keyframes eqpulse { from { transform: scaleY(0.2); } to { transform: scaleY(1); } }
 
-/* Song info */
 .row-info { min-width: 0; }
 
 .row-title {
@@ -739,9 +602,7 @@ body::before {
   font-size: 1.05rem;
   letter-spacing: 0.04em;
   color: var(--white);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   line-height: 1.1;
   margin-bottom: 0.2rem;
   transition: color 0.12s;
@@ -754,12 +615,9 @@ body::before {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--cream2);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 
-/* Duration */
 .row-dur {
   font-size: 0.65rem;
   color: var(--muted);
@@ -767,79 +625,128 @@ body::before {
   flex-shrink: 0;
 }
 
+/* ── Contact Modal ── */
+.modal-overlay {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.75);
+  z-index: 9999;
+  align-items: center; justify-content: center;
+  padding: 1rem;
+}
+
+.modal {
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: 6px;
+  padding: 2rem;
+  width: 100%; max-width: 420px;
+  position: relative;
+}
+
+.modal-close {
+  position: absolute; top: 0.75rem; right: 0.75rem;
+  background: none; border: none;
+  color: var(--muted);
+  font-size: 1.5rem; cursor: pointer; line-height: 1;
+}
+
+.modal-close:hover { color: var(--white); }
+
+.modal-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.6rem;
+  letter-spacing: 0.04em;
+  color: var(--white);
+  margin-bottom: 0.25rem;
+}
+
+.modal-desc {
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 1.25rem;
+}
+
+.modal-field { display: flex; flex-direction: column; gap: 0.3rem; margin-bottom: 1rem; }
+
+.modal-label {
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cream2);
+}
+
+.modal-input {
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  border-radius: 3px;
+  padding: 0.6rem 0.75rem;
+  color: var(--white);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.modal-input:focus { border-color: var(--red); }
+textarea.modal-input { resize: vertical; min-height: 80px; }
+
+.modal-submit {
+  width: 100%;
+  background: var(--red); color: var(--white); border: none;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0.75rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.modal-submit:hover { background: #ff5544; }
+
+.modal-success { display: none; text-align: center; padding: 1rem 0; }
+.modal-success .check { font-size: 2.5rem; color: var(--red); margin-bottom: 0.5rem; }
+.modal-success p { color: var(--cream2); font-size: 0.75rem; }
+
 /* ════════════════════════════════════════
-   MOBILE LAYOUT  (≤768px)
+   MOBILE
 ════════════════════════════════════════ */
 @media (max-width: 768px) {
-
   body { overflow: auto; height: auto; }
 
-  /* Fixed header zone */
   .topbar {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    height: 52px;
-    padding: 0 1rem;
-    z-index: 950;
+    position: fixed; top: 0; left: 0; right: 0;
+    height: 52px; padding: 0 1rem; z-index: 950;
   }
 
   .topbar-nav .topbar-btn { display: none; }
+  .topbar-contact { font-size: 0.55rem; padding: 0.38rem 0.75rem; }
 
-  .topbar-submit {
-    font-size: 0.55rem;
-    padding: 0.38rem 0.75rem;
-  }
-
-  .ticker {
-    position: fixed;
-    top: 52px;
-    z-index: 950;
-  }
-
-  /* Full-page scroll layout */
   .shell {
-    position: static;
-    display: block;
-    margin-top: calc(52px + var(--ticker-h));
+    position: static; display: block;
+    margin-top: 52px;
     padding-bottom: var(--player-h);
   }
 
-  /* Left panel becomes compact now-playing bar */
   .left {
-    width: 100%;
-    min-width: unset;
+    width: 100%; min-width: unset;
     border-right: none;
     border-bottom: 1px solid var(--border2);
-    background: var(--surface);
   }
 
-  .left-scroll {
-    padding: 1.25rem 1rem;
-    overflow: visible;
-  }
+  .left-scroll { padding: 1.25rem 1rem; overflow: visible; }
 
-  /* Hide on mobile */
-  .brand,
-  .vinyl-section,
-  .left-stats { display: none; }
+  .brand, .vinyl-section, .left-stats { display: none; }
 
-  /* Compact now-playing for mobile */
-  .controls {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    margin-bottom: 0;
-  }
+  .controls { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 0; }
 
-  .now-playing-mobile {
-    display: flex;
-    align-items: center;
-    gap: 0.85rem;
-  }
+  .now-playing-mobile { display: flex; align-items: center; gap: 0.85rem; }
 
   .np-vinyl-mini {
-    width: 44px;
-    height: 44px;
+    width: 44px; height: 44px;
     border-radius: 50%;
     background:
       radial-gradient(circle at center, #111 0%, #111 22%, transparent 22.5%),
@@ -850,136 +757,82 @@ body::before {
     position: relative;
   }
 
-  .left .vinyl-section.playing ~ * .np-vinyl-mini,
-  .np-vinyl-mini.playing { animation-play-state: running; }
+  .np-vinyl-mini.spinning { animation-play-state: running; }
 
   .np-vinyl-mini::after {
-    content: '';
-    position: absolute;
-    inset: 30%;
-    border-radius: 50%;
-    background: var(--red);
+    content: ''; position: absolute; inset: 30%;
+    border-radius: 50%; background: var(--red);
   }
 
   .np-text { flex: 1; min-width: 0; }
 
   .np-text .np-title {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 1rem;
-    color: var(--white);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    padding: 0;
-    text-align: left;
+    font-size: 1rem; color: var(--white);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    padding: 0; text-align: left;
   }
 
-  .np-text .np-sub {
-    font-size: 0.55rem;
-    color: var(--cream2);
-    text-align: left;
-  }
+  .np-text .np-sub { font-size: 0.55rem; color: var(--cream2); text-align: left; }
 
-  /* Right panel goes full width on mobile */
-  .right {
-    width: 100%;
-  }
+  .vol-row { display: none; }
+
+  .right { width: 100%; }
 
   .cat-tabs {
-    position: sticky;
-    top: calc(52px + var(--ticker-h));
-    z-index: 800;
-    height: 48px;
-    padding: 0 0.75rem;
+    position: sticky; top: 52px; z-index: 800;
+    height: 48px; padding: 0 0.75rem;
     background: var(--surface);
   }
 
-  .cat-tab {
-    font-size: 0.95rem;
-    padding: 0 0.9rem;
-  }
-
-  .catalog-wrap {
-    overflow: visible;
-  }
+  .cat-tab { font-size: 0.95rem; padding: 0 0.9rem; }
+  .catalog-wrap { overflow: visible; }
 
   .sec-head {
     padding: 1rem 1rem 0.75rem;
-    flex-direction: column;
-    gap: 0.3rem;
-    align-items: flex-start;
+    flex-direction: column; gap: 0.3rem; align-items: flex-start;
   }
 
   .sec-quote { text-align: left; max-width: 100%; font-size: 0.75rem; }
   .sec-title { font-size: 1.5rem; }
 
-  .song-row {
-    padding: 0.8rem 1rem;
-    grid-template-columns: 42px 1fr auto;
-    gap: 0.75rem;
-  }
-
-  .row-box {
-    width: 42px;
-    height: 42px;
-  }
-
+  .song-row { padding: 0.8rem 1rem; grid-template-columns: 42px 1fr auto; gap: 0.75rem; }
+  .row-box { width: 42px; height: 42px; }
   .row-title { font-size: 0.95rem; }
 
-  /* Mobile bottom player */
   .mobile-player {
     display: flex;
-    position: fixed;
-    bottom: 0; left: 0; right: 0;
+    position: fixed; bottom: 0; left: 0; right: 0;
     height: var(--player-h);
     background: var(--cream);
     border-top: 3px solid var(--red);
-    align-items: center;
-    gap: 0;
-    z-index: 950;
+    align-items: center; gap: 0; z-index: 950;
     box-shadow: 0 -6px 30px rgba(0,0,0,0.5);
   }
 
-  .mob-ctrl {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    padding: 0 1rem;
-    flex-shrink: 0;
-  }
+  .mob-ctrl { display: flex; align-items: center; gap: 0.6rem; padding: 0 1rem; flex-shrink: 0; }
 
   .mob-play {
     width: 44px; height: 44px;
-    border-radius: 50%;
-    background: var(--red);
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    cursor: pointer;
-    transition: transform 0.12s;
-    flex-shrink: 0;
+    border-radius: 50%; background: var(--red);
+    border: none; display: flex; align-items: center; justify-content: center;
+    color: white; cursor: pointer;
+    transition: transform 0.12s; flex-shrink: 0;
   }
 
   .mob-play:hover { transform: scale(1.05); }
 
   .mob-prev, .mob-next {
-    background: none;
-    border: none;
-    color: rgba(0,0,0,0.4);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    padding: 0.2rem;
-    transition: color 0.15s;
+    background: none; border: none;
+    color: rgba(0,0,0,0.4); cursor: pointer;
+    display: flex; align-items: center;
+    padding: 0.2rem; transition: color 0.15s;
   }
 
   .mob-prev:hover, .mob-next:hover { color: #000; }
 
   .mob-info {
-    flex: 1;
-    min-width: 0;
+    flex: 1; min-width: 0;
     padding: 0 0.75rem;
     border-left: 1px solid rgba(0,0,0,0.1);
     border-right: 1px solid rgba(0,0,0,0.1);
@@ -987,12 +840,9 @@ body::before {
 
   .mob-title {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 1rem;
-    letter-spacing: 0.06em;
+    font-size: 1rem; letter-spacing: 0.06em;
     color: #000;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     line-height: 1.1;
   }
 
@@ -1008,31 +858,24 @@ body::before {
     background: rgba(0,0,0,0.1);
     margin-top: 0.4rem;
     border-radius: 2px;
-    position: relative;
   }
 
   .mob-prog-fill {
-    height: 100%;
-    background: var(--red);
-    border-radius: 2px;
-    width: 38%;
+    height: 100%; background: var(--red);
+    border-radius: 2px; width: 0%;
+    transition: width 0.2s linear;
   }
 
   .mob-station {
     padding: 0 1rem;
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 1rem;
-    letter-spacing: 0.12em;
+    font-size: 1rem; letter-spacing: 0.12em;
     color: rgba(0,0,0,0.25);
-    flex-shrink: 0;
-    line-height: 1;
+    flex-shrink: 0; line-height: 1;
   }
 }
 
-/* Hide mobile player on desktop */
 .mobile-player { display: none; }
-
-/* Hide mobile now-playing header on desktop */
 .now-playing-mobile { display: none; }
 
 @media (max-width: 768px) {
@@ -1050,46 +893,17 @@ body::before {
   <div class="topbar-nav">
     <button class="topbar-btn">About</button>
     <button class="topbar-btn">Share</button>
-    <button class="topbar-submit">+ Submit a Song</button>
-  </div>
-</div>
-
-<!-- TICKER -->
-<div class="ticker">
-  <div class="ticker-track">
-    <span class="t-item">Non-Aggression Principle</span><span class="t-sep">·</span>
-    <span class="t-item">Taxation Is Theft</span><span class="t-sep">·</span>
-    <span class="t-item">Spontaneous Order</span><span class="t-sep">·</span>
-    <span class="t-item">Sound Money</span><span class="t-sep">·</span>
-    <span class="t-item">Free Markets Free Minds</span><span class="t-sep">·</span>
-    <span class="t-item">Individual Sovereignty</span><span class="t-sep">·</span>
-    <span class="t-item">Road to Serfdom</span><span class="t-sep">·</span>
-    <span class="t-item">Mises Was Right</span><span class="t-sep">·</span>
-    <span class="t-item">Don't Tread on Me</span><span class="t-sep">·</span>
-    <span class="t-item">Voluntary Exchange</span><span class="t-sep">·</span>
-    <span class="t-item">Non-Aggression Principle</span><span class="t-sep">·</span>
-    <span class="t-item">Taxation Is Theft</span><span class="t-sep">·</span>
-    <span class="t-item">Spontaneous Order</span><span class="t-sep">·</span>
-    <span class="t-item">Sound Money</span><span class="t-sep">·</span>
-    <span class="t-item">Free Markets Free Minds</span><span class="t-sep">·</span>
-    <span class="t-item">Individual Sovereignty</span><span class="t-sep">·</span>
-    <span class="t-item">Road to Serfdom</span><span class="t-sep">·</span>
-    <span class="t-item">Mises Was Right</span><span class="t-sep">·</span>
-    <span class="t-item">Don't Tread on Me</span><span class="t-sep">·</span>
-    <span class="t-item">Voluntary Exchange</span><span class="t-sep">·</span>
+    <button class="topbar-contact" onclick="document.getElementById('contactModal').style.display='flex'">Contact</button>
   </div>
 </div>
 
 <!-- SHELL -->
 <div class="shell">
 
-  <!-- ══════════════════════════════
-       LEFT PANEL
-  ══════════════════════════════ -->
+  <!-- LEFT PANEL -->
   <div class="left">
     <div class="left-scroll">
 
-      <!-- Brand -->
       <div class="brand">
         <div class="brand-pill">
           <span class="live-dot"></span>
@@ -1102,9 +916,8 @@ body::before {
         <p class="brand-desc">Music for people who believe the individual is the smallest minority worth defending.</p>
       </div>
 
-      <!-- Vinyl -->
       <div class="vinyl-section">
-        <div class="vinyl-stage playing" id="vinylStage">
+        <div class="vinyl-stage" id="vinylStage">
           <div class="vinyl-glow"></div>
           <div class="record">
             <div class="record-label">
@@ -1116,211 +929,125 @@ body::before {
           </div>
           <div class="arm">
             <div class="arm-pivot"></div>
-            <div class="arm-line">
-              <div class="arm-head"></div>
-            </div>
+            <div class="arm-line"><div class="arm-head"></div></div>
           </div>
         </div>
-
         <div class="now-playing">
           <div class="np-label">Now Playing</div>
-          <div class="np-title" id="npTitle">The Man Who Drew the Curve</div>
-          <div class="np-sub" id="npSub">Milton Friedman · People</div>
+          <div class="np-title" id="npTitle">Select a song</div>
+          <div class="np-sub" id="npSub">Liberty Jukebox</div>
         </div>
       </div>
 
-      <!-- Mobile now-playing strip -->
       <div class="now-playing-mobile">
         <div class="np-vinyl-mini" id="mobileVinyl"></div>
         <div class="np-text">
-          <div class="np-title" id="npTitleMob">The Man Who Drew the Curve</div>
-          <div class="np-sub" id="npSubMob">Milton Friedman · People</div>
+          <div class="np-title" id="npTitleMob">Select a song</div>
+          <div class="np-sub" id="npSubMob">Liberty Jukebox</div>
         </div>
       </div>
 
-      <!-- Controls -->
       <div class="controls">
         <div class="progress">
-          <span class="prog-t" id="progCur">1:18</span>
-          <div class="prog-track">
+          <span class="prog-t" id="progCur">0:00</span>
+          <div class="prog-track" id="progTrack">
             <div class="prog-fill" id="progFill"></div>
           </div>
-          <span class="prog-t" id="progTot">3:24</span>
+          <span class="prog-t" id="progTot">0:00</span>
         </div>
         <div class="ctrl-row">
           <button class="ctrl-btn" onclick="prevSong()">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
           </button>
-          <button class="ctrl-play" id="playBtn" onclick="togglePlay()">
-            <svg id="playIco" width="16" height="18" viewBox="0 0 12 14" fill="currentColor" style="margin-left:2px;display:none"><path d="M1 1l10 6-10 6V1z"/></svg>
-            <svg id="pauseIco" width="16" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+          <button class="ctrl-play" onclick="togglePlay()">
+            <svg id="playIco" width="16" height="18" viewBox="0 0 12 14" fill="currentColor" style="margin-left:2px"><path d="M1 1l10 6-10 6V1z"/></svg>
+            <svg id="pauseIco" width="16" height="18" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
           </button>
           <button class="ctrl-btn" onclick="nextSong()">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zm8.5-6l3.5 6V6z"/></svg>
           </button>
         </div>
+        <div class="vol-row">
+          <span class="vol-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 8.5v7a4.49 4.49 0 0 0 2.5-3.5zM14 3.23v2.06a6.51 6.51 0 0 1 0 13.42v2.06A8.51 8.51 0 0 0 14 3.23z"/></svg></span>
+          <input type="range" class="vol-slider" id="volSlider" min="0" max="100" value="80">
+        </div>
       </div>
 
-      <!-- Stats -->
       <div class="left-stats">
-        <div class="stat"><span class="stat-n">42</span><span class="stat-l">Songs</span></div>
-        <div class="stat"><span class="stat-n">4</span><span class="stat-l">Categories</span></div>
-        <div class="stat"><span class="stat-n">∞</span><span class="stat-l">Freedom</span></div>
+        <div class="stat"><span class="stat-n">8</span><span class="stat-l">Songs</span></div>
+        <div class="stat"><span class="stat-n">3</span><span class="stat-l">Categories</span></div>
+        <div class="stat"><span class="stat-n">&infin;</span><span class="stat-l">Freedom</span></div>
       </div>
 
     </div>
-  </div><!-- /left -->
+  </div>
 
-  <!-- ══════════════════════════════
-       RIGHT PANEL
-  ══════════════════════════════ -->
+  <!-- RIGHT PANEL -->
   <div class="right">
 
-    <!-- Tabs -->
     <div class="cat-tabs">
-      <button class="cat-tab active" onclick="switchCat('people',this)">People <span class="tab-n">14</span></button>
-      <button class="cat-tab" onclick="switchCat('books',this)">Books &amp; Ideas <span class="tab-n">11</span></button>
-      <button class="cat-tab" onclick="switchCat('philosophy',this)">Philosophy <span class="tab-n">9</span></button>
-      <button class="cat-tab" onclick="switchCat('anthems',this)">Anthems <span class="tab-n">8</span></button>
+      <button class="cat-tab active" onclick="switchCat('money',this)">Sound Money &amp; Markets <span class="tab-n">4</span></button>
+      <button class="cat-tab" onclick="switchCat('cronyism',this)">Cronyism &amp; Control <span class="tab-n">3</span></button>
+      <button class="cat-tab" onclick="switchCat('anthems',this)">Anthems <span class="tab-n">1</span></button>
     </div>
 
     <div class="catalog-wrap" id="catalogWrap">
 
-      <!-- ── PEOPLE ── -->
-      <div class="cat-panel active" id="cat-people">
+      <!-- ── SOUND MONEY & MARKETS ── -->
+      <div class="cat-panel active" id="cat-money">
         <div class="sec-head">
-          <div class="sec-title">People &amp; Personalities</div>
-          <div class="sec-quote">"Every great movement begins with one stubborn individual."</div>
-        </div>
-
-        <div class="song-row playing" data-title="The Man Who Drew the Curve" data-sub="Milton Friedman · People" data-dur="3:24" onclick="selectSong(this)">
-          <div class="row-box"><span class="row-n">01</span><div class="row-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z" style="margin-left:1px"/></svg></div><div class="row-eq"><div class="eq"></div><div class="eq"></div><div class="eq"></div><div class="eq"></div></div></div>
-          <div class="row-info"><div class="row-title">The Man Who Drew the Curve</div><div class="row-tag">Milton Friedman</div></div>
-          <div class="row-dur">3:24</div>
-        </div>
-
-        <div class="song-row" data-title="Dad Saves America" data-sub="YouTube Channel · People" data-dur="2:58" onclick="selectSong(this)">
-          <div class="row-box"><span class="row-n">02</span><div class="row-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z" style="margin-left:1px"/></svg></div><div class="row-eq"><div class="eq"></div><div class="eq"></div><div class="eq"></div><div class="eq"></div></div></div>
-          <div class="row-info"><div class="row-title">Dad Saves America</div><div class="row-tag">YouTube Channel</div></div>
-          <div class="row-dur">2:58</div>
-        </div>
-
-        <div class="song-row" data-title="Mises Had It Right" data-sub="Ludwig von Mises · People" data-dur="3:11" onclick="selectSong(this)">
-          <div class="row-box"><span class="row-n">03</span><div class="row-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z" style="margin-left:1px"/></svg></div><div class="row-eq"><div class="eq"></div><div class="eq"></div><div class="eq"></div><div class="eq"></div></div></div>
-          <div class="row-info"><div class="row-title">Mises Had It Right</div><div class="row-tag">Ludwig von Mises</div></div>
-          <div class="row-dur">3:11</div>
-        </div>
-
-        <div class="song-row" data-title="Hayek's Humility" data-sub="F.A. Hayek · People" data-dur="2:51" onclick="selectSong(this)">
-          <div class="row-box"><span class="row-n">04</span><div class="row-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z" style="margin-left:1px"/></svg></div><div class="row-eq"><div class="eq"></div><div class="eq"></div><div class="eq"></div><div class="eq"></div></div></div>
-          <div class="row-info"><div class="row-title">Hayek's Humility</div><div class="row-tag">F.A. Hayek</div></div>
-          <div class="row-dur">2:51</div>
-        </div>
-
-        <div class="song-row" data-title="Rand's Shrug" data-sub="Ayn Rand · People" data-dur="2:44" onclick="selectSong(this)">
-          <div class="row-box"><span class="row-n">05</span><div class="row-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z" style="margin-left:1px"/></svg></div><div class="row-eq"><div class="eq"></div><div class="eq"></div><div class="eq"></div><div class="eq"></div></div></div>
-          <div class="row-info"><div class="row-title">Rand's Shrug</div><div class="row-tag">Ayn Rand</div></div>
-          <div class="row-dur">2:44</div>
-        </div>
-
-        <div class="song-row" data-title="I, Pencil (The Song)" data-sub="Leonard Read · People" data-dur="3:02" onclick="selectSong(this)">
-          <div class="row-box"><span class="row-n">06</span><div class="row-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z" style="margin-left:1px"/></svg></div><div class="row-eq"><div class="eq"></div><div class="eq"></div><div class="eq"></div><div class="eq"></div></div></div>
-          <div class="row-info"><div class="row-title">I, Pencil (The Song)</div><div class="row-tag">Leonard Read</div></div>
-          <div class="row-dur">3:02</div>
-        </div>
-
-        <div class="song-row" data-title="The Libertarian Cowboy" data-sub="Ron Paul · People" data-dur="3:33" onclick="selectSong(this)">
-          <div class="row-box"><span class="row-n">07</span><div class="row-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z" style="margin-left:1px"/></svg></div><div class="row-eq"><div class="eq"></div><div class="eq"></div><div class="eq"></div><div class="eq"></div></div></div>
-          <div class="row-info"><div class="row-title">The Libertarian Cowboy</div><div class="row-tag">Ron Paul</div></div>
-          <div class="row-dur">3:33</div>
-        </div>
-
-        <div class="song-row" data-title="Bastiat's Ghost" data-sub="Frédéric Bastiat · People" data-dur="2:48" onclick="selectSong(this)">
-          <div class="row-box"><span class="row-n">08</span><div class="row-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z" style="margin-left:1px"/></svg></div><div class="row-eq"><div class="eq"></div><div class="eq"></div><div class="eq"></div><div class="eq"></div></div></div>
-          <div class="row-info"><div class="row-title">Bastiat's Ghost</div><div class="row-tag">Frédéric Bastiat</div></div>
-          <div class="row-dur">2:48</div>
-        </div>
-      </div>
-
-      <!-- ── BOOKS ── -->
-      <div class="cat-panel" id="cat-books">
-        <div class="sec-head">
-          <div class="sec-title">Books &amp; Ideas</div>
-          <div class="sec-quote">"The most dangerous books are the ones that are right."</div>
-        </div>
-
-        <div class="song-row" data-title="The Road to Serfdom" data-sub="F.A. Hayek · Books" data-dur="3:44" onclick="selectSong(this)">
-          <div class="row-box"><span class="row-n">01</span><div class="row-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z" style="margin-left:1px"/></svg></div><div class="row-eq"><div class="eq"></div><div class="eq"></div><div class="eq"></div><div class="eq"></div></div></div>
-          <div class="row-info"><div class="row-title">The Road to Serfdom (They Paved It With Good Intentions)</div><div class="row-tag">F.A. Hayek · 1944</div></div>
-          <div class="row-dur">3:44</div>
-        </div>
-
-        <div class="song-row" data-title="Read Bastiat" data-sub="The Law · Books" data-dur="2:33" onclick="selectSong(this)">
-          <div class="row-box"><span class="row-n">02</span><div class="row-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z" style="margin-left:1px"/></svg></div><div class="row-eq"><div class="eq"></div><div class="eq"></div><div class="eq"></div><div class="eq"></div></div></div>
-          <div class="row-info"><div class="row-title">Read Bastiat</div><div class="row-tag">The Law · Frédéric Bastiat</div></div>
-          <div class="row-dur">2:33</div>
-        </div>
-
-        <div class="song-row" data-title="Economics in One Lesson" data-sub="Henry Hazlitt · Books" data-dur="3:18" onclick="selectSong(this)">
-          <div class="row-box"><span class="row-n">03</span><div class="row-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z" style="margin-left:1px"/></svg></div><div class="row-eq"><div class="eq"></div><div class="eq"></div><div class="eq"></div><div class="eq"></div></div></div>
-          <div class="row-info"><div class="row-title">Economics in One Lesson (Nobody Read It)</div><div class="row-tag">Henry Hazlitt · 1946</div></div>
-          <div class="row-dur">3:18</div>
-        </div>
-
-        <div class="song-row" data-title="Atlas Didn't Shrug, He Left" data-sub="Ayn Rand · Books" data-dur="4:01" onclick="selectSong(this)">
-          <div class="row-box"><span class="row-n">04</span><div class="row-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z" style="margin-left:1px"/></svg></div><div class="row-eq"><div class="eq"></div><div class="eq"></div><div class="eq"></div><div class="eq"></div></div></div>
-          <div class="row-info"><div class="row-title">Atlas Didn't Shrug, He Left</div><div class="row-tag">Ayn Rand · Atlas Shrugged</div></div>
-          <div class="row-dur">4:01</div>
-        </div>
-
-        <div class="song-row" data-title="The Seen and the Unseen" data-sub="Bastiat · Books" data-dur="2:47" onclick="selectSong(this)">
-          <div class="row-box"><span class="row-n">05</span><div class="row-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z" style="margin-left:1px"/></svg></div><div class="row-eq"><div class="eq"></div><div class="eq"></div><div class="eq"></div><div class="eq"></div></div></div>
-          <div class="row-info"><div class="row-title">The Seen and the Unseen</div><div class="row-tag">Bastiat · Economic Sophisms</div></div>
-          <div class="row-dur">2:47</div>
-        </div>
-
-        <div class="song-row" data-title="Human Action (The Remix)" data-sub="Ludwig von Mises · Books" data-dur="3:29" onclick="selectSong(this)">
-          <div class="row-box"><span class="row-n">06</span><div class="row-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z" style="margin-left:1px"/></svg></div><div class="row-eq"><div class="eq"></div><div class="eq"></div><div class="eq"></div><div class="eq"></div></div></div>
-          <div class="row-info"><div class="row-title">Human Action (The Remix)</div><div class="row-tag">Ludwig von Mises</div></div>
-          <div class="row-dur">3:29</div>
-        </div>
-      </div>
-
-      <!-- ── PHILOSOPHY ── -->
-      <div class="cat-panel" id="cat-philosophy">
-        <div class="sec-head">
-          <div class="sec-title">Principles &amp; Philosophy</div>
+          <div class="sec-title">Sound Money &amp; Markets</div>
           <div class="sec-quote">"The price system knows more than any planner ever will."</div>
         </div>
 
-        <div class="song-row" data-title="The Non-Aggression Principle" data-sub="Core Philosophy" data-dur="3:05" onclick="selectSong(this)">
+        <div class="song-row" data-title="21 Million" data-sub="Satoshi &middot; Sound Money" data-src="https://raw.githubusercontent.com/tjlark23/SFYS-music/main/TJs%20Playlist/21%20Million%20%28Satoshi%29.mp3" onclick="selectSong(this)">
           <div class="row-box"><span class="row-n">01</span><div class="row-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z" style="margin-left:1px"/></svg></div><div class="row-eq"><div class="eq"></div><div class="eq"></div><div class="eq"></div><div class="eq"></div></div></div>
-          <div class="row-info"><div class="row-title">The Non-Aggression Principle</div><div class="row-tag">Core Libertarian Philosophy</div></div>
-          <div class="row-dur">3:05</div>
+          <div class="row-info"><div class="row-title">21 Million</div><div class="row-tag">Satoshi &middot; Sound Money</div></div>
+          <div class="row-dur" id="dur-0">--:--</div>
         </div>
 
-        <div class="song-row" data-title="Sound Money or Bust" data-sub="Austrian Economics" data-dur="2:59" onclick="selectSong(this)">
+        <div class="song-row" data-title="They Keep Printing" data-sub="Monetary Policy" data-src="https://raw.githubusercontent.com/tjlark23/SFYS-music/main/TJs%20Playlist/They%20Keep%20Printing.mp3" onclick="selectSong(this)">
           <div class="row-box"><span class="row-n">02</span><div class="row-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z" style="margin-left:1px"/></svg></div><div class="row-eq"><div class="eq"></div><div class="eq"></div><div class="eq"></div><div class="eq"></div></div></div>
-          <div class="row-info"><div class="row-title">Sound Money or Bust</div><div class="row-tag">Austrian Economics</div></div>
-          <div class="row-dur">2:59</div>
+          <div class="row-info"><div class="row-title">They Keep Printing</div><div class="row-tag">Monetary Policy</div></div>
+          <div class="row-dur" id="dur-1">--:--</div>
         </div>
 
-        <div class="song-row" data-title="Crony Capitalism Ain't Capitalism" data-sub="Free Markets" data-dur="3:22" onclick="selectSong(this)">
+        <div class="song-row" data-title="Today It's Billionaires" data-sub="Class Warfare &middot; Markets" data-src="https://raw.githubusercontent.com/tjlark23/SFYS-music/main/TJs%20Playlist/Today%20It%27s%20Billionaires.mp3" onclick="selectSong(this)">
           <div class="row-box"><span class="row-n">03</span><div class="row-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z" style="margin-left:1px"/></svg></div><div class="row-eq"><div class="eq"></div><div class="eq"></div><div class="eq"></div><div class="eq"></div></div></div>
-          <div class="row-info"><div class="row-title">Crony Capitalism Ain't Capitalism</div><div class="row-tag">Free Markets</div></div>
-          <div class="row-dur">3:22</div>
+          <div class="row-info"><div class="row-title">Today It's Billionaires</div><div class="row-tag">Class Warfare &middot; Markets</div></div>
+          <div class="row-dur" id="dur-2">--:--</div>
         </div>
 
-        <div class="song-row" data-title="Spontaneous Order" data-sub="Emergent Systems" data-dur="2:38" onclick="selectSong(this)">
+        <div class="song-row" data-title="Don't Price Me Out" data-sub="Housing &middot; Free Markets" data-src="https://raw.githubusercontent.com/tjlark23/SFYS-music/main/TJs%20Playlist/Don%27t%20Price%20Me%20Out%20%281%29.mp3" onclick="selectSong(this)">
           <div class="row-box"><span class="row-n">04</span><div class="row-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z" style="margin-left:1px"/></svg></div><div class="row-eq"><div class="eq"></div><div class="eq"></div><div class="eq"></div><div class="eq"></div></div></div>
-          <div class="row-info"><div class="row-title">Spontaneous Order</div><div class="row-tag">Emergent Systems · Hayek</div></div>
-          <div class="row-dur">2:38</div>
+          <div class="row-info"><div class="row-title">Don't Price Me Out</div><div class="row-tag">Housing &middot; Free Markets</div></div>
+          <div class="row-dur" id="dur-3">--:--</div>
+        </div>
+      </div>
+
+      <!-- ── CRONYISM & CONTROL ── -->
+      <div class="cat-panel" id="cat-cronyism">
+        <div class="sec-head">
+          <div class="sec-title">Cronyism &amp; Control</div>
+          <div class="sec-quote">"When buying and selling are controlled by legislation, the first things bought and sold are legislators."</div>
         </div>
 
-        <div class="song-row" data-title="Voluntary or Nothing" data-sub="Voluntaryism" data-dur="3:14" onclick="selectSong(this)">
-          <div class="row-box"><span class="row-n">05</span><div class="row-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z" style="margin-left:1px"/></svg></div><div class="row-eq"><div class="eq"></div><div class="eq"></div><div class="eq"></div><div class="eq"></div></div></div>
-          <div class="row-info"><div class="row-title">Voluntary or Nothing</div><div class="row-tag">Voluntaryism</div></div>
-          <div class="row-dur">3:14</div>
+        <div class="song-row" data-title="Collectivist City" data-sub="Collectivism &middot; Control" data-src="https://raw.githubusercontent.com/tjlark23/SFYS-music/main/TJs%20Playlist/Collectivist%20City.mp3" onclick="selectSong(this)">
+          <div class="row-box"><span class="row-n">01</span><div class="row-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z" style="margin-left:1px"/></svg></div><div class="row-eq"><div class="eq"></div><div class="eq"></div><div class="eq"></div><div class="eq"></div></div></div>
+          <div class="row-info"><div class="row-title">Collectivist City</div><div class="row-tag">Collectivism &middot; Control</div></div>
+          <div class="row-dur" id="dur-4">--:--</div>
+        </div>
+
+        <div class="song-row" data-title="Friend of the Incumbent" data-sub="Bill Gurley &middot; Cronyism" data-src="https://raw.githubusercontent.com/tjlark23/SFYS-music/main/TJs%20Playlist/Friend%20of%20the%20Incumbent%20%28Bill%20Gurley%29%20%281%29.mp3" onclick="selectSong(this)">
+          <div class="row-box"><span class="row-n">02</span><div class="row-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z" style="margin-left:1px"/></svg></div><div class="row-eq"><div class="eq"></div><div class="eq"></div><div class="eq"></div><div class="eq"></div></div></div>
+          <div class="row-info"><div class="row-title">Friend of the Incumbent</div><div class="row-tag">Bill Gurley &middot; Cronyism</div></div>
+          <div class="row-dur" id="dur-5">--:--</div>
+        </div>
+
+        <div class="song-row" data-title="School Zone" data-sub="Education &middot; Government" data-src="https://raw.githubusercontent.com/tjlark23/SFYS-music/main/TJs%20Playlist/School%20Zone%20%281%29.mp3" onclick="selectSong(this)">
+          <div class="row-box"><span class="row-n">03</span><div class="row-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z" style="margin-left:1px"/></svg></div><div class="row-eq"><div class="eq"></div><div class="eq"></div><div class="eq"></div><div class="eq"></div></div></div>
+          <div class="row-info"><div class="row-title">School Zone</div><div class="row-tag">Education &middot; Government</div></div>
+          <div class="row-dur" id="dur-6">--:--</div>
         </div>
       </div>
 
@@ -1328,44 +1055,20 @@ body::before {
       <div class="cat-panel" id="cat-anthems">
         <div class="sec-head">
           <div class="sec-title">Anthems</div>
-          <div class="sec-quote">"Live free — or at least know what you're giving up."</div>
+          <div class="sec-quote">"Live free or at least know what you're giving up."</div>
         </div>
 
-        <div class="song-row" data-title="Don't Tread on Me (2025)" data-sub="Freedom Anthem" data-dur="3:51" onclick="selectSong(this)">
+        <div class="song-row" data-title="What if We Win" data-sub="Liberty Anthem" data-src="https://raw.githubusercontent.com/tjlark23/SFYS-music/main/TJs%20Playlist/What%20if%20We%20Win%20%281%29.mp3" onclick="selectSong(this)">
           <div class="row-box"><span class="row-n">01</span><div class="row-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z" style="margin-left:1px"/></svg></div><div class="row-eq"><div class="eq"></div><div class="eq"></div><div class="eq"></div><div class="eq"></div></div></div>
-          <div class="row-info"><div class="row-title">Don't Tread on Me (2025 Version)</div><div class="row-tag">Freedom Anthem</div></div>
-          <div class="row-dur">3:51</div>
-        </div>
-
-        <div class="song-row" data-title="Leave Me Alone (I'm Building)" data-sub="Entrepreneurship" data-dur="3:14" onclick="selectSong(this)">
-          <div class="row-box"><span class="row-n">02</span><div class="row-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z" style="margin-left:1px"/></svg></div><div class="row-eq"><div class="eq"></div><div class="eq"></div><div class="eq"></div><div class="eq"></div></div></div>
-          <div class="row-info"><div class="row-title">Leave Me Alone (I'm Building Something)</div><div class="row-tag">Entrepreneurship & Freedom</div></div>
-          <div class="row-dur">3:14</div>
-        </div>
-
-        <div class="song-row" data-title="The Constitution Wasn't a Suggestion" data-sub="Constitutional Rights" data-dur="2:29" onclick="selectSong(this)">
-          <div class="row-box"><span class="row-n">03</span><div class="row-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z" style="margin-left:1px"/></svg></div><div class="row-eq"><div class="eq"></div><div class="eq"></div><div class="eq"></div><div class="eq"></div></div></div>
-          <div class="row-info"><div class="row-title">The Constitution Wasn't a Suggestion</div><div class="row-tag">Constitutional Rights</div></div>
-          <div class="row-dur">2:29</div>
-        </div>
-
-        <div class="song-row" data-title="Nobody Asked the Market" data-sub="Free Markets" data-dur="3:07" onclick="selectSong(this)">
-          <div class="row-box"><span class="row-n">04</span><div class="row-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z" style="margin-left:1px"/></svg></div><div class="row-eq"><div class="eq"></div><div class="eq"></div><div class="eq"></div><div class="eq"></div></div></div>
-          <div class="row-info"><div class="row-title">Nobody Asked the Market</div><div class="row-tag">Price System · Free Markets</div></div>
-          <div class="row-dur">3:07</div>
-        </div>
-
-        <div class="song-row" data-title="Free State of Mind" data-sub="Liberty Anthem" data-dur="3:42" onclick="selectSong(this)">
-          <div class="row-box"><span class="row-n">05</span><div class="row-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z" style="margin-left:1px"/></svg></div><div class="row-eq"><div class="eq"></div><div class="eq"></div><div class="eq"></div><div class="eq"></div></div></div>
-          <div class="row-info"><div class="row-title">Free State of Mind</div><div class="row-tag">Liberty Anthem</div></div>
-          <div class="row-dur">3:42</div>
+          <div class="row-info"><div class="row-title">What if We Win</div><div class="row-tag">Liberty Anthem</div></div>
+          <div class="row-dur" id="dur-7">--:--</div>
         </div>
       </div>
 
-    </div><!-- /catalog-wrap -->
-  </div><!-- /right -->
+    </div>
+  </div>
 
-</div><!-- /shell -->
+</div>
 
 <!-- MOBILE BOTTOM PLAYER -->
 <div class="mobile-player">
@@ -1374,39 +1077,86 @@ body::before {
       <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
     </button>
     <button class="mob-play" onclick="togglePlay()">
-      <svg id="mobPlayIco" width="14" height="16" viewBox="0 0 12 14" fill="currentColor" style="margin-left:2px;display:none"><path d="M1 1l10 6-10 6V1z"/></svg>
-      <svg id="mobPauseIco" width="14" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+      <svg id="mobPlayIco" width="14" height="16" viewBox="0 0 12 14" fill="currentColor" style="margin-left:2px"><path d="M1 1l10 6-10 6V1z"/></svg>
+      <svg id="mobPauseIco" width="14" height="16" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
     </button>
     <button class="mob-next" onclick="nextSong()">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zm8.5-6l3.5 6V6z"/></svg>
     </button>
   </div>
   <div class="mob-info">
-    <div class="mob-title" id="mobTitle">The Man Who Drew the Curve</div>
-    <div class="mob-cat" id="mobCat">People & Personalities</div>
+    <div class="mob-title" id="mobTitle">Select a song</div>
+    <div class="mob-cat" id="mobCat">Liberty Jukebox</div>
     <div class="mob-prog"><div class="mob-prog-fill" id="mobProgFill"></div></div>
   </div>
-  <div class="mob-station">LJ·FM</div>
+  <div class="mob-station">LJ&middot;FM</div>
+</div>
+
+<!-- CONTACT MODAL -->
+<div class="modal-overlay" id="contactModal" onclick="if(event.target===this)this.style.display='none'">
+  <div class="modal">
+    <button class="modal-close" onclick="document.getElementById('contactModal').style.display='none'">&times;</button>
+    <div id="contactForm">
+      <div class="modal-title">Get In Touch</div>
+      <div class="modal-desc">Questions, ideas, or just want to talk liberty.</div>
+      <form onsubmit="submitContact(event)">
+        <div class="modal-field">
+          <label class="modal-label">Name</label>
+          <input class="modal-input" type="text" id="cName" required placeholder="Your name">
+        </div>
+        <div class="modal-field">
+          <label class="modal-label">Email</label>
+          <input class="modal-input" type="email" id="cEmail" required placeholder="you@email.com">
+        </div>
+        <div class="modal-field">
+          <label class="modal-label">Comments / Questions</label>
+          <textarea class="modal-input" id="cMessage" required placeholder="What's on your mind?"></textarea>
+        </div>
+        <button type="submit" class="modal-submit">Send Message</button>
+      </form>
+    </div>
+    <div class="modal-success" id="contactSuccess">
+      <div class="check">&#10003;</div>
+      <div class="modal-title">Message Sent</div>
+      <p>We'll get back to you soon.</p>
+    </div>
+  </div>
 </div>
 
 <script>
-// ── STATE ──
-let isPlaying = true;
-let currentRow = document.querySelector('.song-row.playing');
+// ════════════════════════════════════════
+//   AUDIO ENGINE
+// ════════════════════════════════════════
+const audio = new Audio();
+audio.volume = 0.8;
+audio.preload = 'auto';
+audio.crossOrigin = 'anonymous';
 
-// ── TOGGLE PLAY ──
-function togglePlay() {
-  isPlaying = !isPlaying;
+let isPlaying = false;
+let currentRow = null;
+
+function fmtTime(s) {
+  if (isNaN(s) || !isFinite(s)) return '0:00';
+  const m = Math.floor(s / 60);
+  const sec = Math.floor(s % 60);
+  return m + ':' + String(sec).padStart(2, '0');
+}
+
+function setPlayingUI(playing) {
+  isPlaying = playing;
   const stage = document.getElementById('vinylStage');
+  const mini = document.getElementById('mobileVinyl');
 
-  if (isPlaying) {
+  if (playing) {
     stage.classList.add('playing');
+    if (mini) mini.classList.add('spinning');
     document.getElementById('playIco').style.display = 'none';
     document.getElementById('pauseIco').style.display = 'block';
     document.getElementById('mobPlayIco').style.display = 'none';
     document.getElementById('mobPauseIco').style.display = 'block';
   } else {
     stage.classList.remove('playing');
+    if (mini) mini.classList.remove('spinning');
     document.getElementById('playIco').style.display = 'block';
     document.getElementById('pauseIco').style.display = 'none';
     document.getElementById('mobPlayIco').style.display = 'block';
@@ -1414,7 +1164,46 @@ function togglePlay() {
   }
 }
 
-// ── SELECT SONG ──
+function updateNowPlaying(title, sub) {
+  document.getElementById('npTitle').textContent = title;
+  document.getElementById('npSub').textContent = sub;
+  document.getElementById('npTitleMob').textContent = title;
+  document.getElementById('npSubMob').textContent = sub;
+  document.getElementById('mobTitle').textContent = title;
+}
+
+// Audio events
+audio.addEventListener('timeupdate', () => {
+  if (!audio.duration) return;
+  const pct = (audio.currentTime / audio.duration) * 100;
+  document.getElementById('progFill').style.width = pct + '%';
+  document.getElementById('mobProgFill').style.width = pct + '%';
+  document.getElementById('progCur').textContent = fmtTime(audio.currentTime);
+});
+
+audio.addEventListener('loadedmetadata', () => {
+  document.getElementById('progTot').textContent = fmtTime(audio.duration);
+  if (currentRow) {
+    currentRow.querySelector('.row-dur').textContent = fmtTime(audio.duration);
+  }
+});
+
+audio.addEventListener('ended', () => { nextSong(); });
+
+function togglePlay() {
+  if (!currentRow) {
+    const first = document.querySelector('.cat-panel.active .song-row');
+    if (first) selectSong(first);
+    return;
+  }
+  if (isPlaying) {
+    audio.pause();
+    setPlayingUI(false);
+  } else {
+    audio.play().then(() => setPlayingUI(true)).catch(() => {});
+  }
+}
+
 function selectSong(row) {
   document.querySelectorAll('.song-row.playing').forEach(r => r.classList.remove('playing'));
   row.classList.add('playing');
@@ -1422,45 +1211,41 @@ function selectSong(row) {
 
   const title = row.dataset.title;
   const sub = row.dataset.sub;
-  const dur = row.dataset.dur;
+  const src = row.dataset.src;
 
-  // Desktop
-  document.getElementById('npTitle').textContent = title;
-  document.getElementById('npSub').textContent = sub;
-  document.getElementById('progTot').textContent = dur;
-  document.getElementById('progCur').textContent = '0:00';
+  updateNowPlaying(title, sub);
+
   document.getElementById('progFill').style.width = '0%';
-
-  // Mobile
-  document.getElementById('npTitleMob').textContent = title;
-  document.getElementById('npSubMob').textContent = sub;
-  document.getElementById('mobTitle').textContent = title;
   document.getElementById('mobProgFill').style.width = '0%';
+  document.getElementById('progCur').textContent = '0:00';
+  document.getElementById('progTot').textContent = '0:00';
 
-  isPlaying = true;
-  document.getElementById('vinylStage').classList.add('playing');
-  document.getElementById('playIco').style.display = 'none';
-  document.getElementById('pauseIco').style.display = 'block';
-  document.getElementById('mobPlayIco').style.display = 'none';
-  document.getElementById('mobPauseIco').style.display = 'block';
-
-  pct = 0;
+  if (src) {
+    audio.src = src;
+    audio.play().then(() => setPlayingUI(true)).catch(() => setPlayingUI(false));
+  }
 }
 
-// ── PREV / NEXT ──
+function getAllRows() {
+  return Array.from(document.querySelectorAll('.cat-panel.active .song-row'));
+}
+
 function prevSong() {
-  const rows = Array.from(document.querySelectorAll('.cat-panel.active .song-row'));
+  const rows = getAllRows();
   const idx = rows.indexOf(currentRow);
   if (idx > 0) selectSong(rows[idx - 1]);
 }
 
 function nextSong() {
-  const rows = Array.from(document.querySelectorAll('.cat-panel.active .song-row'));
+  const rows = getAllRows();
   const idx = rows.indexOf(currentRow);
-  if (idx < rows.length - 1) selectSong(rows[idx + 1]);
+  if (idx < rows.length - 1) {
+    selectSong(rows[idx + 1]);
+  } else {
+    setPlayingUI(false);
+  }
 }
 
-// ── SWITCH CATEGORY ──
 function switchCat(id, btn) {
   document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
   btn.classList.add('active');
@@ -1471,7 +1256,6 @@ function switchCat(id, btn) {
   document.getElementById('catalogWrap').scrollTop = 0;
 }
 
-// ── ROW ANIMATION ──
 function animateRows(panel) {
   const rows = panel.querySelectorAll('.song-row');
   rows.forEach((r, i) => {
@@ -1480,23 +1264,63 @@ function animateRows(panel) {
   });
 }
 
-// ── INIT ──
-animateRows(document.getElementById('cat-people'));
+// Seek
+document.getElementById('progTrack').addEventListener('click', (e) => {
+  if (!audio.duration) return;
+  const rect = e.currentTarget.getBoundingClientRect();
+  const pct = (e.clientX - rect.left) / rect.width;
+  audio.currentTime = pct * audio.duration;
+});
 
-// ── FAKE PROGRESS ──
-let pct = 38;
-setInterval(() => {
-  if (!isPlaying) return;
-  pct = (pct + 0.04) % 100;
-  document.getElementById('progFill').style.width = pct + '%';
-  document.getElementById('mobProgFill').style.width = pct + '%';
+// Volume
+document.getElementById('volSlider').addEventListener('input', (e) => {
+  audio.volume = e.target.value / 100;
+});
 
-  const total = 204;
-  const cur = Math.floor((pct / 100) * total);
-  const m = Math.floor(cur / 60);
-  const s = String(cur % 60).padStart(2, '0');
-  document.getElementById('progCur').textContent = `${m}:${s}`;
-}, 200);
+// Contact form
+function submitContact(e) {
+  e.preventDefault();
+  const data = {
+    access_key: '56590443-7f71-46a8-bd67-4db0c516e74a',
+    name: document.getElementById('cName').value,
+    email: document.getElementById('cEmail').value,
+    message: document.getElementById('cMessage').value,
+    subject: 'Liberty Jukebox Contact'
+  };
+  fetch('https://api.web3forms.com/submit', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  }).then(() => {
+    document.getElementById('contactForm').style.display = 'none';
+    document.getElementById('contactSuccess').style.display = 'block';
+    setTimeout(() => {
+      document.getElementById('contactModal').style.display = 'none';
+      document.getElementById('contactForm').style.display = 'block';
+      document.getElementById('contactSuccess').style.display = 'none';
+      e.target.reset();
+    }, 2500);
+  });
+}
+
+// Preload durations
+function preloadDurations() {
+  document.querySelectorAll('.song-row').forEach((row, i) => {
+    const src = row.dataset.src;
+    if (!src) return;
+    const a = new Audio();
+    a.preload = 'metadata';
+    a.crossOrigin = 'anonymous';
+    a.addEventListener('loadedmetadata', () => {
+      row.querySelector('.row-dur').textContent = fmtTime(a.duration);
+    });
+    a.src = src;
+  });
+}
+
+// Init
+animateRows(document.getElementById('cat-money'));
+preloadDurations();
 </script>
 
 </body>
