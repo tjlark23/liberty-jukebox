@@ -986,15 +986,72 @@ textarea.modal-input { resize: vertical; min-height: 80px; }
   <div class="right">
 
     <div class="cat-tabs">
-      <button class="cat-tab active" onclick="switchCat('money',this)">Sound Money &amp; Markets <span class="tab-n">4</span></button>
+      <button class="cat-tab active" onclick="switchCat('all',this)">All Songs <span class="tab-n">8</span></button>
+      <button class="cat-tab" onclick="switchCat('money',this)">Sound Money &amp; Markets <span class="tab-n">4</span></button>
       <button class="cat-tab" onclick="switchCat('cronyism',this)">Cronyism &amp; Control <span class="tab-n">3</span></button>
       <button class="cat-tab" onclick="switchCat('anthems',this)">Anthems <span class="tab-n">1</span></button>
     </div>
 
     <div class="catalog-wrap" id="catalogWrap">
 
+      <!-- ── ALL SONGS ── -->
+      <div class="cat-panel active" id="cat-all">
+        <div class="sec-head">
+          <div class="sec-title">All Songs</div>
+          <div class="sec-quote">"The individual is the smallest minority worth defending."</div>
+        </div>
+
+        <div class="song-row" data-title="21 Million" data-sub="Satoshi &middot; Sound Money" data-src="https://raw.githubusercontent.com/tjlark23/SFYS-music/main/TJs%20Playlist/21%20Million%20%28Satoshi%29.mp3" onclick="selectSong(this)">
+          <div class="row-box"><span class="row-n">01</span><div class="row-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z" style="margin-left:1px"/></svg></div><div class="row-eq"><div class="eq"></div><div class="eq"></div><div class="eq"></div><div class="eq"></div></div></div>
+          <div class="row-info"><div class="row-title">21 Million</div><div class="row-tag">Satoshi &middot; Sound Money</div></div>
+          <div class="row-dur">--:--</div>
+        </div>
+
+        <div class="song-row" data-title="They Keep Printing" data-sub="Monetary Policy" data-src="https://raw.githubusercontent.com/tjlark23/SFYS-music/main/TJs%20Playlist/They%20Keep%20Printing.mp3" onclick="selectSong(this)">
+          <div class="row-box"><span class="row-n">02</span><div class="row-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z" style="margin-left:1px"/></svg></div><div class="row-eq"><div class="eq"></div><div class="eq"></div><div class="eq"></div><div class="eq"></div></div></div>
+          <div class="row-info"><div class="row-title">They Keep Printing</div><div class="row-tag">Monetary Policy</div></div>
+          <div class="row-dur">--:--</div>
+        </div>
+
+        <div class="song-row" data-title="Today It's Billionaires" data-sub="Class Warfare &middot; Markets" data-src="https://raw.githubusercontent.com/tjlark23/SFYS-music/main/TJs%20Playlist/Today%20It%27s%20Billionaires.mp3" onclick="selectSong(this)">
+          <div class="row-box"><span class="row-n">03</span><div class="row-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z" style="margin-left:1px"/></svg></div><div class="row-eq"><div class="eq"></div><div class="eq"></div><div class="eq"></div><div class="eq"></div></div></div>
+          <div class="row-info"><div class="row-title">Today It's Billionaires</div><div class="row-tag">Class Warfare &middot; Markets</div></div>
+          <div class="row-dur">--:--</div>
+        </div>
+
+        <div class="song-row" data-title="Don't Price Me Out" data-sub="Housing &middot; Free Markets" data-src="https://raw.githubusercontent.com/tjlark23/SFYS-music/main/TJs%20Playlist/Don%27t%20Price%20Me%20Out%20%281%29.mp3" onclick="selectSong(this)">
+          <div class="row-box"><span class="row-n">04</span><div class="row-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z" style="margin-left:1px"/></svg></div><div class="row-eq"><div class="eq"></div><div class="eq"></div><div class="eq"></div><div class="eq"></div></div></div>
+          <div class="row-info"><div class="row-title">Don't Price Me Out</div><div class="row-tag">Housing &middot; Free Markets</div></div>
+          <div class="row-dur">--:--</div>
+        </div>
+
+        <div class="song-row" data-title="Collectivist City" data-sub="Collectivism &middot; Control" data-src="https://raw.githubusercontent.com/tjlark23/SFYS-music/main/TJs%20Playlist/Collectivist%20City.mp3" onclick="selectSong(this)">
+          <div class="row-box"><span class="row-n">05</span><div class="row-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z" style="margin-left:1px"/></svg></div><div class="row-eq"><div class="eq"></div><div class="eq"></div><div class="eq"></div><div class="eq"></div></div></div>
+          <div class="row-info"><div class="row-title">Collectivist City</div><div class="row-tag">Collectivism &middot; Control</div></div>
+          <div class="row-dur">--:--</div>
+        </div>
+
+        <div class="song-row" data-title="Friend of the Incumbent" data-sub="Bill Gurley &middot; Cronyism" data-src="https://raw.githubusercontent.com/tjlark23/SFYS-music/main/TJs%20Playlist/Friend%20of%20the%20Incumbent%20%28Bill%20Gurley%29%20%281%29.mp3" onclick="selectSong(this)">
+          <div class="row-box"><span class="row-n">06</span><div class="row-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z" style="margin-left:1px"/></svg></div><div class="row-eq"><div class="eq"></div><div class="eq"></div><div class="eq"></div><div class="eq"></div></div></div>
+          <div class="row-info"><div class="row-title">Friend of the Incumbent</div><div class="row-tag">Bill Gurley &middot; Cronyism</div></div>
+          <div class="row-dur">--:--</div>
+        </div>
+
+        <div class="song-row" data-title="School Zone" data-sub="Education &middot; Government" data-src="https://raw.githubusercontent.com/tjlark23/SFYS-music/main/TJs%20Playlist/School%20Zone%20%281%29.mp3" onclick="selectSong(this)">
+          <div class="row-box"><span class="row-n">07</span><div class="row-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z" style="margin-left:1px"/></svg></div><div class="row-eq"><div class="eq"></div><div class="eq"></div><div class="eq"></div><div class="eq"></div></div></div>
+          <div class="row-info"><div class="row-title">School Zone</div><div class="row-tag">Education &middot; Government</div></div>
+          <div class="row-dur">--:--</div>
+        </div>
+
+        <div class="song-row" data-title="What if We Win" data-sub="Liberty Anthem" data-src="https://raw.githubusercontent.com/tjlark23/SFYS-music/main/TJs%20Playlist/What%20if%20We%20Win%20%281%29.mp3" onclick="selectSong(this)">
+          <div class="row-box"><span class="row-n">08</span><div class="row-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z" style="margin-left:1px"/></svg></div><div class="row-eq"><div class="eq"></div><div class="eq"></div><div class="eq"></div><div class="eq"></div></div></div>
+          <div class="row-info"><div class="row-title">What if We Win</div><div class="row-tag">Liberty Anthem</div></div>
+          <div class="row-dur">--:--</div>
+        </div>
+      </div>
+
       <!-- ── SOUND MONEY & MARKETS ── -->
-      <div class="cat-panel active" id="cat-money">
+      <div class="cat-panel" id="cat-money">
         <div class="sec-head">
           <div class="sec-title">Sound Money &amp; Markets</div>
           <div class="sec-quote">"The price system knows more than any planner ever will."</div>
@@ -1319,7 +1376,7 @@ function preloadDurations() {
 }
 
 // Init
-animateRows(document.getElementById('cat-money'));
+animateRows(document.getElementById('cat-all'));
 preloadDurations();
 </script>
 
