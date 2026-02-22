@@ -60,10 +60,19 @@ body::before {
 .profile-photo {
   width: 160px; height: 160px;
   border-radius: 6px;
-  object-fit: cover;
   border: 2px solid var(--border2);
   flex-shrink: 0;
   background: var(--surface2);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.profile-photo img {
+  width: 100%; height: 100%; object-fit: cover;
+}
+.profile-initial {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3.5rem; letter-spacing: 0.08em;
+  color: var(--red); opacity: 0.7;
 }
 .profile-info { flex: 1; min-width: 0; padding-top: 0.25rem; }
 .profile-name {
@@ -192,6 +201,7 @@ body::before {
 @media (max-width: 600px) {
   .profile-hero { flex-direction: column; align-items: center; text-align: center; gap: 1.25rem; padding-top: 68px; }
   .profile-photo { width: 120px; height: 120px; }
+  .profile-initial { font-size: 2.8rem; }
   .profile-name { font-size: 2.2rem; }
   .profile-quote { border-left: none; padding-left: 0; border-top: 2px solid var(--red); padding-top: 0.75rem; font-size: 1.05rem; }
   .song-title { font-size: 2.2rem; }
@@ -208,7 +218,10 @@ body::before {
 
 <!-- PROFILE HERO -->
 <div class="profile-hero">
-  <img class="profile-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Bill_Gurley_in_2015_%28cropped%29.jpg/440px-Bill_Gurley_in_2015_%28cropped%29.jpg" alt="Bill Gurley" onerror="this.style.display='none'">
+  <!-- To add a real photo: upload bill-gurley.jpg to img/ folder in this repo, then change the src below to "img/bill-gurley.jpg" -->
+  <div class="profile-photo" aria-label="Bill Gurley">
+    <span class="profile-initial">BG</span>
+  </div>
   <div class="profile-info">
     <div class="profile-name">Bill Gurley</div>
     <div class="profile-role">General Partner at Benchmark &middot; Early Uber investor &middot; Austin, Texas</div>
