@@ -515,7 +515,7 @@ body::before {
 /* ── Song rows ── */
 .song-row {
   display: grid;
-  grid-template-columns: 48px 1fr auto;
+  grid-template-columns: 48px 1fr auto auto;
   align-items: center;
   gap: 1rem;
   padding: 0.9rem 1.75rem;
@@ -617,6 +617,16 @@ body::before {
   color: var(--cream2);
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
+
+.row-link {
+  display: flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px;
+  background: none; border: 1px solid var(--border);
+  border-radius: 3px; cursor: pointer;
+  color: var(--muted); transition: color 0.15s, border-color 0.15s, background 0.15s;
+  flex-shrink: 0; text-decoration: none;
+}
+.row-link:hover { color: var(--red); border-color: var(--red); background: var(--red-dim); }
 
 .row-dur {
   font-size: 0.65rem;
@@ -796,7 +806,7 @@ textarea.modal-input { resize: vertical; min-height: 80px; }
   .sec-quote { text-align: left; max-width: 100%; font-size: 0.75rem; }
   .sec-title { font-size: 1.5rem; }
 
-  .song-row { padding: 0.8rem 1rem; grid-template-columns: 42px 1fr auto; gap: 0.75rem; }
+  .song-row { padding: 0.8rem 1rem; grid-template-columns: 42px 1fr auto auto; gap: 0.75rem; }
   .row-box { width: 42px; height: 42px; }
   .row-title { font-size: 0.95rem; }
 
@@ -1001,52 +1011,60 @@ textarea.modal-input { resize: vertical; min-height: 80px; }
           <div class="sec-quote">"The individual is the smallest minority worth defending."</div>
         </div>
 
-        <div class="song-row" data-title="21 Million" data-sub="Satoshi &middot; Sound Money" data-src="https://raw.githubusercontent.com/tjlark23/SFYS-music/main/TJs%20Playlist/21%20Million%20%28Satoshi%29.mp3" onclick="selectSong(this)">
+        <div class="song-row" data-title="21 Million" data-page="songs/21-million.html" data-sub="Satoshi &middot; Sound Money" data-src="https://raw.githubusercontent.com/tjlark23/SFYS-music/main/TJs%20Playlist/21%20Million%20%28Satoshi%29.mp3" onclick="selectSong(this)">
           <div class="row-box"><span class="row-n">01</span><div class="row-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z" style="margin-left:1px"/></svg></div><div class="row-eq"><div class="eq"></div><div class="eq"></div><div class="eq"></div><div class="eq"></div></div></div>
           <div class="row-info"><div class="row-title">21 Million</div><div class="row-tag">Satoshi &middot; Sound Money</div></div>
           <div class="row-dur">--:--</div>
+          <a class="row-link" href="songs/21-million.html" title="Song details" onclick="event.stopPropagation()"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
         </div>
 
-        <div class="song-row" data-title="They Keep Printing" data-sub="Monetary Policy" data-src="https://raw.githubusercontent.com/tjlark23/SFYS-music/main/TJs%20Playlist/They%20Keep%20Printing.mp3" onclick="selectSong(this)">
+        <div class="song-row" data-title="They Keep Printing" data-page="songs/they-keep-printing.html" data-sub="Monetary Policy" data-src="https://raw.githubusercontent.com/tjlark23/SFYS-music/main/TJs%20Playlist/They%20Keep%20Printing.mp3" onclick="selectSong(this)">
           <div class="row-box"><span class="row-n">02</span><div class="row-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z" style="margin-left:1px"/></svg></div><div class="row-eq"><div class="eq"></div><div class="eq"></div><div class="eq"></div><div class="eq"></div></div></div>
           <div class="row-info"><div class="row-title">They Keep Printing</div><div class="row-tag">Monetary Policy</div></div>
           <div class="row-dur">--:--</div>
+          <a class="row-link" href="songs/they-keep-printing.html" title="Song details" onclick="event.stopPropagation()"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
         </div>
 
-        <div class="song-row" data-title="Today It's Billionaires" data-sub="Class Warfare &middot; Markets" data-src="https://raw.githubusercontent.com/tjlark23/SFYS-music/main/TJs%20Playlist/Today%20It%27s%20Billionaires.mp3" onclick="selectSong(this)">
+        <div class="song-row" data-title="Today It's Billionaires" data-page="songs/today-its-billionaires.html" data-sub="Class Warfare &middot; Markets" data-src="https://raw.githubusercontent.com/tjlark23/SFYS-music/main/TJs%20Playlist/Today%20It%27s%20Billionaires.mp3" onclick="selectSong(this)">
           <div class="row-box"><span class="row-n">03</span><div class="row-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z" style="margin-left:1px"/></svg></div><div class="row-eq"><div class="eq"></div><div class="eq"></div><div class="eq"></div><div class="eq"></div></div></div>
           <div class="row-info"><div class="row-title">Today It's Billionaires</div><div class="row-tag">Class Warfare &middot; Markets</div></div>
           <div class="row-dur">--:--</div>
+          <a class="row-link" href="songs/today-its-billionaires.html" title="Song details" onclick="event.stopPropagation()"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
         </div>
 
-        <div class="song-row" data-title="Don't Price Me Out" data-sub="Housing &middot; Free Markets" data-src="https://raw.githubusercontent.com/tjlark23/SFYS-music/main/TJs%20Playlist/Don%27t%20Price%20Me%20Out%20%281%29.mp3" onclick="selectSong(this)">
+        <div class="song-row" data-title="Don't Price Me Out" data-page="songs/dont-price-me-out.html" data-sub="Housing &middot; Free Markets" data-src="https://raw.githubusercontent.com/tjlark23/SFYS-music/main/TJs%20Playlist/Don%27t%20Price%20Me%20Out%20%281%29.mp3" onclick="selectSong(this)">
           <div class="row-box"><span class="row-n">04</span><div class="row-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z" style="margin-left:1px"/></svg></div><div class="row-eq"><div class="eq"></div><div class="eq"></div><div class="eq"></div><div class="eq"></div></div></div>
           <div class="row-info"><div class="row-title">Don't Price Me Out</div><div class="row-tag">Housing &middot; Free Markets</div></div>
           <div class="row-dur">--:--</div>
+          <a class="row-link" href="songs/dont-price-me-out.html" title="Song details" onclick="event.stopPropagation()"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
         </div>
 
-        <div class="song-row" data-title="Collectivist City" data-sub="Collectivism &middot; Control" data-src="https://raw.githubusercontent.com/tjlark23/SFYS-music/main/TJs%20Playlist/Collectivist%20City.mp3" onclick="selectSong(this)">
+        <div class="song-row" data-title="Collectivist City" data-page="songs/collectivist-city.html" data-sub="Collectivism &middot; Control" data-src="https://raw.githubusercontent.com/tjlark23/SFYS-music/main/TJs%20Playlist/Collectivist%20City.mp3" onclick="selectSong(this)">
           <div class="row-box"><span class="row-n">05</span><div class="row-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z" style="margin-left:1px"/></svg></div><div class="row-eq"><div class="eq"></div><div class="eq"></div><div class="eq"></div><div class="eq"></div></div></div>
           <div class="row-info"><div class="row-title">Collectivist City</div><div class="row-tag">Collectivism &middot; Control</div></div>
           <div class="row-dur">--:--</div>
+          <a class="row-link" href="songs/collectivist-city.html" title="Song details" onclick="event.stopPropagation()"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
         </div>
 
-        <div class="song-row" data-title="Friend of the Incumbent" data-sub="Bill Gurley &middot; Cronyism" data-src="https://raw.githubusercontent.com/tjlark23/SFYS-music/main/TJs%20Playlist/Friend%20of%20the%20Incumbent%20%28Bill%20Gurley%29%20%281%29.mp3" onclick="selectSong(this)">
+        <div class="song-row" data-title="Friend of the Incumbent" data-page="songs/friend-of-the-incumbent.html" data-sub="Bill Gurley &middot; Cronyism" data-src="https://raw.githubusercontent.com/tjlark23/SFYS-music/main/TJs%20Playlist/Friend%20of%20the%20Incumbent%20%28Bill%20Gurley%29%20%281%29.mp3" onclick="selectSong(this)">
           <div class="row-box"><span class="row-n">06</span><div class="row-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z" style="margin-left:1px"/></svg></div><div class="row-eq"><div class="eq"></div><div class="eq"></div><div class="eq"></div><div class="eq"></div></div></div>
           <div class="row-info"><div class="row-title">Friend of the Incumbent</div><div class="row-tag">Bill Gurley &middot; Cronyism</div></div>
           <div class="row-dur">--:--</div>
+          <a class="row-link" href="songs/friend-of-the-incumbent.html" title="Song details" onclick="event.stopPropagation()"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
         </div>
 
-        <div class="song-row" data-title="School Zone" data-sub="Education &middot; Government" data-src="https://raw.githubusercontent.com/tjlark23/SFYS-music/main/TJs%20Playlist/School%20Zone%20%281%29.mp3" onclick="selectSong(this)">
+        <div class="song-row" data-title="School Zone" data-page="songs/school-zone.html" data-sub="Education &middot; Government" data-src="https://raw.githubusercontent.com/tjlark23/SFYS-music/main/TJs%20Playlist/School%20Zone%20%281%29.mp3" onclick="selectSong(this)">
           <div class="row-box"><span class="row-n">07</span><div class="row-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z" style="margin-left:1px"/></svg></div><div class="row-eq"><div class="eq"></div><div class="eq"></div><div class="eq"></div><div class="eq"></div></div></div>
           <div class="row-info"><div class="row-title">School Zone</div><div class="row-tag">Education &middot; Government</div></div>
           <div class="row-dur">--:--</div>
+          <a class="row-link" href="songs/school-zone.html" title="Song details" onclick="event.stopPropagation()"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
         </div>
 
-        <div class="song-row" data-title="What if We Win" data-sub="Liberty Anthem" data-src="https://raw.githubusercontent.com/tjlark23/SFYS-music/main/TJs%20Playlist/What%20if%20We%20Win%20%281%29.mp3" onclick="selectSong(this)">
+        <div class="song-row" data-title="What if We Win" data-page="songs/what-if-we-win.html" data-sub="Liberty Anthem" data-src="https://raw.githubusercontent.com/tjlark23/SFYS-music/main/TJs%20Playlist/What%20if%20We%20Win%20%281%29.mp3" onclick="selectSong(this)">
           <div class="row-box"><span class="row-n">08</span><div class="row-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z" style="margin-left:1px"/></svg></div><div class="row-eq"><div class="eq"></div><div class="eq"></div><div class="eq"></div><div class="eq"></div></div></div>
           <div class="row-info"><div class="row-title">What if We Win</div><div class="row-tag">Liberty Anthem</div></div>
           <div class="row-dur">--:--</div>
+          <a class="row-link" href="songs/what-if-we-win.html" title="Song details" onclick="event.stopPropagation()"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
         </div>
       </div>
 
@@ -1057,28 +1075,32 @@ textarea.modal-input { resize: vertical; min-height: 80px; }
           <div class="sec-quote">"The price system knows more than any planner ever will."</div>
         </div>
 
-        <div class="song-row" data-title="21 Million" data-sub="Satoshi &middot; Sound Money" data-src="https://raw.githubusercontent.com/tjlark23/SFYS-music/main/TJs%20Playlist/21%20Million%20%28Satoshi%29.mp3" onclick="selectSong(this)">
+        <div class="song-row" data-title="21 Million" data-page="songs/21-million.html" data-sub="Satoshi &middot; Sound Money" data-src="https://raw.githubusercontent.com/tjlark23/SFYS-music/main/TJs%20Playlist/21%20Million%20%28Satoshi%29.mp3" onclick="selectSong(this)">
           <div class="row-box"><span class="row-n">01</span><div class="row-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z" style="margin-left:1px"/></svg></div><div class="row-eq"><div class="eq"></div><div class="eq"></div><div class="eq"></div><div class="eq"></div></div></div>
           <div class="row-info"><div class="row-title">21 Million</div><div class="row-tag">Satoshi &middot; Sound Money</div></div>
           <div class="row-dur" id="dur-0">--:--</div>
+          <a class="row-link" href="songs/21-million.html" title="Song details" onclick="event.stopPropagation()"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
         </div>
 
-        <div class="song-row" data-title="They Keep Printing" data-sub="Monetary Policy" data-src="https://raw.githubusercontent.com/tjlark23/SFYS-music/main/TJs%20Playlist/They%20Keep%20Printing.mp3" onclick="selectSong(this)">
+        <div class="song-row" data-title="They Keep Printing" data-page="songs/they-keep-printing.html" data-sub="Monetary Policy" data-src="https://raw.githubusercontent.com/tjlark23/SFYS-music/main/TJs%20Playlist/They%20Keep%20Printing.mp3" onclick="selectSong(this)">
           <div class="row-box"><span class="row-n">02</span><div class="row-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z" style="margin-left:1px"/></svg></div><div class="row-eq"><div class="eq"></div><div class="eq"></div><div class="eq"></div><div class="eq"></div></div></div>
           <div class="row-info"><div class="row-title">They Keep Printing</div><div class="row-tag">Monetary Policy</div></div>
           <div class="row-dur" id="dur-1">--:--</div>
+          <a class="row-link" href="songs/they-keep-printing.html" title="Song details" onclick="event.stopPropagation()"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
         </div>
 
-        <div class="song-row" data-title="Today It's Billionaires" data-sub="Class Warfare &middot; Markets" data-src="https://raw.githubusercontent.com/tjlark23/SFYS-music/main/TJs%20Playlist/Today%20It%27s%20Billionaires.mp3" onclick="selectSong(this)">
+        <div class="song-row" data-title="Today It's Billionaires" data-page="songs/today-its-billionaires.html" data-sub="Class Warfare &middot; Markets" data-src="https://raw.githubusercontent.com/tjlark23/SFYS-music/main/TJs%20Playlist/Today%20It%27s%20Billionaires.mp3" onclick="selectSong(this)">
           <div class="row-box"><span class="row-n">03</span><div class="row-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z" style="margin-left:1px"/></svg></div><div class="row-eq"><div class="eq"></div><div class="eq"></div><div class="eq"></div><div class="eq"></div></div></div>
           <div class="row-info"><div class="row-title">Today It's Billionaires</div><div class="row-tag">Class Warfare &middot; Markets</div></div>
           <div class="row-dur" id="dur-2">--:--</div>
+          <a class="row-link" href="songs/today-its-billionaires.html" title="Song details" onclick="event.stopPropagation()"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
         </div>
 
-        <div class="song-row" data-title="Don't Price Me Out" data-sub="Housing &middot; Free Markets" data-src="https://raw.githubusercontent.com/tjlark23/SFYS-music/main/TJs%20Playlist/Don%27t%20Price%20Me%20Out%20%281%29.mp3" onclick="selectSong(this)">
+        <div class="song-row" data-title="Don't Price Me Out" data-page="songs/dont-price-me-out.html" data-sub="Housing &middot; Free Markets" data-src="https://raw.githubusercontent.com/tjlark23/SFYS-music/main/TJs%20Playlist/Don%27t%20Price%20Me%20Out%20%281%29.mp3" onclick="selectSong(this)">
           <div class="row-box"><span class="row-n">04</span><div class="row-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z" style="margin-left:1px"/></svg></div><div class="row-eq"><div class="eq"></div><div class="eq"></div><div class="eq"></div><div class="eq"></div></div></div>
           <div class="row-info"><div class="row-title">Don't Price Me Out</div><div class="row-tag">Housing &middot; Free Markets</div></div>
           <div class="row-dur" id="dur-3">--:--</div>
+          <a class="row-link" href="songs/dont-price-me-out.html" title="Song details" onclick="event.stopPropagation()"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
         </div>
       </div>
 
@@ -1089,22 +1111,25 @@ textarea.modal-input { resize: vertical; min-height: 80px; }
           <div class="sec-quote">"When buying and selling are controlled by legislation, the first things bought and sold are legislators."</div>
         </div>
 
-        <div class="song-row" data-title="Collectivist City" data-sub="Collectivism &middot; Control" data-src="https://raw.githubusercontent.com/tjlark23/SFYS-music/main/TJs%20Playlist/Collectivist%20City.mp3" onclick="selectSong(this)">
+        <div class="song-row" data-title="Collectivist City" data-page="songs/collectivist-city.html" data-sub="Collectivism &middot; Control" data-src="https://raw.githubusercontent.com/tjlark23/SFYS-music/main/TJs%20Playlist/Collectivist%20City.mp3" onclick="selectSong(this)">
           <div class="row-box"><span class="row-n">01</span><div class="row-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z" style="margin-left:1px"/></svg></div><div class="row-eq"><div class="eq"></div><div class="eq"></div><div class="eq"></div><div class="eq"></div></div></div>
           <div class="row-info"><div class="row-title">Collectivist City</div><div class="row-tag">Collectivism &middot; Control</div></div>
           <div class="row-dur" id="dur-4">--:--</div>
+          <a class="row-link" href="songs/collectivist-city.html" title="Song details" onclick="event.stopPropagation()"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
         </div>
 
-        <div class="song-row" data-title="Friend of the Incumbent" data-sub="Bill Gurley &middot; Cronyism" data-src="https://raw.githubusercontent.com/tjlark23/SFYS-music/main/TJs%20Playlist/Friend%20of%20the%20Incumbent%20%28Bill%20Gurley%29%20%281%29.mp3" onclick="selectSong(this)">
+        <div class="song-row" data-title="Friend of the Incumbent" data-page="songs/friend-of-the-incumbent.html" data-sub="Bill Gurley &middot; Cronyism" data-src="https://raw.githubusercontent.com/tjlark23/SFYS-music/main/TJs%20Playlist/Friend%20of%20the%20Incumbent%20%28Bill%20Gurley%29%20%281%29.mp3" onclick="selectSong(this)">
           <div class="row-box"><span class="row-n">02</span><div class="row-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z" style="margin-left:1px"/></svg></div><div class="row-eq"><div class="eq"></div><div class="eq"></div><div class="eq"></div><div class="eq"></div></div></div>
           <div class="row-info"><div class="row-title">Friend of the Incumbent</div><div class="row-tag">Bill Gurley &middot; Cronyism</div></div>
           <div class="row-dur" id="dur-5">--:--</div>
+          <a class="row-link" href="songs/friend-of-the-incumbent.html" title="Song details" onclick="event.stopPropagation()"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
         </div>
 
-        <div class="song-row" data-title="School Zone" data-sub="Education &middot; Government" data-src="https://raw.githubusercontent.com/tjlark23/SFYS-music/main/TJs%20Playlist/School%20Zone%20%281%29.mp3" onclick="selectSong(this)">
+        <div class="song-row" data-title="School Zone" data-page="songs/school-zone.html" data-sub="Education &middot; Government" data-src="https://raw.githubusercontent.com/tjlark23/SFYS-music/main/TJs%20Playlist/School%20Zone%20%281%29.mp3" onclick="selectSong(this)">
           <div class="row-box"><span class="row-n">03</span><div class="row-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z" style="margin-left:1px"/></svg></div><div class="row-eq"><div class="eq"></div><div class="eq"></div><div class="eq"></div><div class="eq"></div></div></div>
           <div class="row-info"><div class="row-title">School Zone</div><div class="row-tag">Education &middot; Government</div></div>
           <div class="row-dur" id="dur-6">--:--</div>
+          <a class="row-link" href="songs/school-zone.html" title="Song details" onclick="event.stopPropagation()"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
         </div>
       </div>
 
@@ -1115,10 +1140,11 @@ textarea.modal-input { resize: vertical; min-height: 80px; }
           <div class="sec-quote">"Live free or at least know what you're giving up."</div>
         </div>
 
-        <div class="song-row" data-title="What if We Win" data-sub="Liberty Anthem" data-src="https://raw.githubusercontent.com/tjlark23/SFYS-music/main/TJs%20Playlist/What%20if%20We%20Win%20%281%29.mp3" onclick="selectSong(this)">
+        <div class="song-row" data-title="What if We Win" data-page="songs/what-if-we-win.html" data-sub="Liberty Anthem" data-src="https://raw.githubusercontent.com/tjlark23/SFYS-music/main/TJs%20Playlist/What%20if%20We%20Win%20%281%29.mp3" onclick="selectSong(this)">
           <div class="row-box"><span class="row-n">01</span><div class="row-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z" style="margin-left:1px"/></svg></div><div class="row-eq"><div class="eq"></div><div class="eq"></div><div class="eq"></div><div class="eq"></div></div></div>
           <div class="row-info"><div class="row-title">What if We Win</div><div class="row-tag">Liberty Anthem</div></div>
           <div class="row-dur" id="dur-7">--:--</div>
+          <a class="row-link" href="songs/what-if-we-win.html" title="Song details" onclick="event.stopPropagation()"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
         </div>
       </div>
 

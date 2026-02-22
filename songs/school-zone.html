@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>School Zone — Liberty Jukebox</title>
+<meta name="description" content="School Zone — a freedom-themed song inspired by education freedom. Listen free on Liberty Jukebox.">
+<meta property="og:title" content="School Zone — Liberty Jukebox">
+<meta property="og:description" content="A freedom-themed song inspired by education freedom. Listen free.">
+<meta property="og:type" content="music.song">
+<meta property="og:url" content="https://liberty-jukebox.pages.dev/songs/school-zone.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="School Zone — Liberty Jukebox">
+<meta name="twitter:description" content="A freedom-themed song inspired by education freedom. Listen free.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,400;1,400;1,600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #000; --surface: #1e1e1a; --surface2: #2a2a24; --surface3: #343430;
+  --border: rgba(255,255,255,0.12); --border2: rgba(255,255,255,0.22);
+  --white: #fff; --cream: #f0e6c0; --cream2: #c8b880;
+  --muted: rgba(240,230,192,0.45); --red: #ff3d2e;
+  --red-glow: rgba(255,61,46,0.25); --red-dim: rgba(255,61,46,0.12);
+}
+html { font-size: 16px; }
+body {
+  background: var(--bg); color: var(--white);
+  font-family: 'JetBrains Mono', monospace;
+  min-height: 100vh;
+}
+body::before {
+  content: ''; position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.025; pointer-events: none; z-index: 9998;
+}
+.topbar {
+  position: fixed; top: 0; left: 0; right: 0; height: 48px;
+  background: var(--bg); border-bottom: 1px solid var(--border2);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 1.5rem; z-index: 900;
+}
+.topbar-logo {
+  font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem;
+  letter-spacing: 0.1em; color: var(--white); text-decoration: none;
+}
+.topbar-logo em { color: var(--red); font-style: normal; }
+.topbar-back {
+  font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--muted); text-decoration: none; transition: color 0.15s;
+}
+.topbar-back:hover { color: var(--white); }
+.wrap {
+  max-width: 680px; margin: 0 auto;
+  padding: 80px 1.5rem 3rem;
+}
+.song-tag {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--red-dim); border: 1px solid rgba(255,61,46,0.3);
+  padding: 0.3rem 0.75rem; border-radius: 2px; margin-bottom: 1.25rem;
+  font-size: 0.55rem; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--red);
+}
+.song-title {
+  font-family: 'Bebas Neue', sans-serif; font-size: 3.2rem;
+  letter-spacing: 0.02em; line-height: 0.95; color: var(--white);
+  margin-bottom: 0.4rem;
+}
+.song-sub {
+  font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--cream2); margin-bottom: 2rem;
+}
+/* Player */
+.player-card {
+  background: var(--surface); border: 1px solid var(--border2);
+  border-radius: 6px; padding: 1.5rem; margin-bottom: 2.5rem;
+  display: flex; align-items: center; gap: 1.25rem;
+}
+.vinyl-mini {
+  width: 64px; height: 64px; border-radius: 50%; flex-shrink: 0;
+  background:
+    radial-gradient(circle at center, #111 0%, #111 22%, transparent 22.5%),
+    repeating-radial-gradient(circle at center, #0a0a0a 0px, #0a0a0a 1px, #141414 1px, #141414 4px);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.6);
+  animation: spin 3.5s linear infinite paused;
+  position: relative;
+}
+.vinyl-mini.spinning { animation-play-state: running; }
+.vinyl-mini::after {
+  content: ''; position: absolute; inset: 30%;
+  border-radius: 50%; background: var(--red);
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.player-controls { flex: 1; }
+.player-top { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.75rem; }
+.play-btn {
+  width: 44px; height: 44px; border-radius: 50%; background: var(--red);
+  border: none; display: flex; align-items: center; justify-content: center;
+  color: white; cursor: pointer; flex-shrink: 0;
+  box-shadow: 0 4px 16px var(--red-glow);
+  transition: transform 0.12s;
+}
+.play-btn:hover { transform: scale(1.07); }
+.player-info { flex: 1; min-width: 0; }
+.player-title {
+  font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem;
+  color: var(--white); line-height: 1.1;
+}
+.player-sub { font-size: 0.55rem; letter-spacing: 0.12em; color: var(--cream2); text-transform: uppercase; }
+.prog-row { display: flex; align-items: center; gap: 0.5rem; }
+.prog-t { font-size: 0.55rem; color: var(--muted); min-width: 26px; }
+.prog-track {
+  flex: 1; height: 4px; background: var(--surface3);
+  border-radius: 2px; cursor: pointer;
+}
+.prog-fill {
+  height: 100%; background: var(--red); border-radius: 2px;
+  width: 0%; position: relative; transition: width 0.2s linear;
+}
+.prog-fill::after {
+  content: ''; position: absolute; right: -4px; top: 50%;
+  transform: translateY(-50%); width: 9px; height: 9px;
+  background: var(--white); border-radius: 50%;
+  box-shadow: 0 0 0 2px var(--red);
+}
+/* Content */
+.divider {
+  height: 1px; background: var(--border2);
+  margin-bottom: 2rem;
+}
+.desc {
+  font-family: 'Crimson Pro', serif;
+  font-size: 1.1rem; line-height: 1.7;
+  color: var(--cream); margin-bottom: 1.25rem;
+}
+.desc:last-of-type { margin-bottom: 2rem; }
+/* Share */
+.share-section {
+  border-top: 1px solid var(--border2);
+  padding-top: 1.5rem; margin-top: 1rem;
+}
+.share-label {
+  font-size: 0.55rem; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 0.75rem;
+}
+.share-btns { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.share-btn {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  background: var(--surface2); border: 1px solid var(--border2);
+  border-radius: 3px; padding: 0.5rem 1rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--cream2); text-decoration: none; cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.share-btn:hover { background: var(--surface3); color: var(--white); }
+.share-btn.x-btn { background: var(--red-dim); border-color: rgba(255,61,46,0.3); color: var(--red); }
+.share-btn.x-btn:hover { background: var(--red); color: var(--white); }
+.back-link {
+  display: block; text-align: center; margin-top: 2.5rem;
+  font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--muted); text-decoration: none;
+  transition: color 0.15s;
+}
+.back-link:hover { color: var(--white); }
+@media (max-width: 600px) {
+  .song-title { font-size: 2.2rem; }
+  .player-card { flex-direction: column; align-items: stretch; gap: 1rem; }
+  .vinyl-mini { width: 48px; height: 48px; align-self: center; }
+}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a href="/" class="topbar-logo">Liberty <em>Jukebox</em></a>
+  <a href="/" class="topbar-back">&larr; All Songs</a>
+</div>
+<div class="wrap">
+  <div class="song-tag">Education · Government</div>
+  <h1 class="song-title">School Zone</h1>
+  <div class="song-sub">Inspired by education freedom</div>
+
+  <div class="player-card">
+    <div class="vinyl-mini" id="vinyl"></div>
+    <div class="player-controls">
+      <div class="player-top">
+        <button class="play-btn" id="playBtn" onclick="togglePlay()">
+          <svg id="playIco" width="14" height="16" viewBox="0 0 12 14" fill="currentColor" style="margin-left:2px"><path d="M1 1l10 6-10 6V1z"/></svg>
+          <svg id="pauseIco" width="14" height="16" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+        </button>
+        <div class="player-info">
+          <div class="player-title">School Zone</div>
+          <div class="player-sub">Education · Government</div>
+        </div>
+      </div>
+      <div class="prog-row">
+        <span class="prog-t" id="cur">0:00</span>
+        <div class="prog-track" id="progTrack">
+          <div class="prog-fill" id="progFill"></div>
+        </div>
+        <span class="prog-t" id="tot">0:00</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <p class="desc">The American public education system spends more per student than almost any country on earth. The results do not match the investment. Standardized test scores are stagnant or declining. Literacy rates are falling. And the system fiercely resists every attempt at reform, choice, or competition.</p>
+<p class="desc">School choice terrifies the education establishment because it puts power in the hands of parents instead of administrators. Charter schools, homeschooling, micro-schools, and voucher programs all represent the same threat: proof that a monopoly on education is not necessary and was never in the best interest of kids.</p>
+<p class="desc">This song is about the zone we have all been stuck in. A system designed more to protect itself than to educate children. The good news is that parents are waking up. The walls around the school zone are starting to crack.</p>
+
+  <div class="share-section">
+    <div class="share-label">Share This Song</div>
+    <div class="share-btns">
+      <a class="share-btn x-btn" onclick="shareX()" href="#" target="_blank" rel="noopener">Share on X</a>
+      <button class="share-btn" onclick="navigator.clipboard.writeText('https://liberty-jukebox.pages.dev/songs/school-zone.html');this.textContent='Copied!'">Copy Link</button>
+    </div>
+  </div>
+
+  <a href="/" class="back-link">&larr; Back to Liberty Jukebox</a>
+</div>
+
+<script>
+const audio = new Audio('https://raw.githubusercontent.com/tjlark23/SFYS-music/main/TJs%20Playlist/School%20Zone%20%281%29.mp3');
+audio.preload = 'auto';
+audio.crossOrigin = 'anonymous';
+let playing = false;
+
+function fmt(s) {
+  if (isNaN(s)||!isFinite(s)) return '0:00';
+  return Math.floor(s/60)+':'+String(Math.floor(s%60)).padStart(2,'0');
+}
+
+function togglePlay() {
+  if (playing) { audio.pause(); setUI(false); }
+  else { audio.play().then(()=>setUI(true)).catch(()=>{}); }
+}
+
+function setUI(p) {
+  playing = p;
+  document.getElementById('playIco').style.display = p ? 'none' : 'block';
+  document.getElementById('pauseIco').style.display = p ? 'block' : 'none';
+  document.getElementById('vinyl').classList.toggle('spinning', p);
+}
+
+audio.addEventListener('timeupdate', () => {
+  if (!audio.duration) return;
+  document.getElementById('progFill').style.width = (audio.currentTime/audio.duration*100)+'%';
+  document.getElementById('cur').textContent = fmt(audio.currentTime);
+});
+audio.addEventListener('loadedmetadata', () => {
+  document.getElementById('tot').textContent = fmt(audio.duration);
+});
+audio.addEventListener('ended', () => setUI(false));
+document.getElementById('progTrack').addEventListener('click', (e) => {
+  if (!audio.duration) return;
+  const r = e.currentTarget.getBoundingClientRect();
+  audio.currentTime = ((e.clientX-r.left)/r.width) * audio.duration;
+});
+function shareX(){const u=window.location.href;const t=document.querySelector(".song-title").textContent;window.open("https://twitter.com/intent/tweet?text="+encodeURIComponent("🎵 \""+t+"\" — Listen free on Liberty Jukebox\n"+u)+"\</script>hashtags=LibertyJukebox","_blank");}
+</script>
+</body>
+</html>
