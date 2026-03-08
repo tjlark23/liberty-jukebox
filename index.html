@@ -1287,6 +1287,21 @@ audio.addEventListener('loadedmetadata', () => {
 
 audio.addEventListener('ended', () => { nextSong(); });
 
+// Safety: if timeupdate shows we're at the end but ended hasn't fired
+audio.addEventListener('timeupdate', () => {
+  if (audio.duration && audio.currentTime >= audio.duration - 0.3 && !audio.paused) {
+    // Will naturally trigger ended, but set a safety timeout
+    if (!audio._endSafety) {
+      audio._endSafety = setTimeout(() => {
+        if (audio.ended || (audio.duration && audio.currentTime >= audio.duration - 0.5)) {
+          nextSong();
+        }
+        audio._endSafety = null;
+      }, 1500);
+    }
+  }
+});
+
 function togglePlay() {
   if (!currentRow) {
     const first = document.querySelector('.cat-panel.active .song-row');
@@ -1319,7 +1334,13 @@ function selectSong(row) {
 
   if (src) {
     audio.src = src;
-    audio.play().then(() => setPlayingUI(true)).catch(() => setPlayingUI(false));
+    audio.load();
+    audio.play().then(() => setPlayingUI(true)).catch(() => {
+      // Retry once after a short delay (helps with mobile autoplay)
+      setTimeout(() => {
+        audio.play().then(() => setPlayingUI(true)).catch(() => setPlayingUI(false));
+      }, 150);
+    });
   }
 }
 
@@ -1338,8 +1359,8 @@ function nextSong() {
   const idx = rows.indexOf(currentRow);
   if (idx < rows.length - 1) {
     selectSong(rows[idx + 1]);
-  } else {
-    setPlayingUI(false);
+  } else if (rows.length > 0) {
+    selectSong(rows[0]);
   }
 }
 
