@@ -1,0 +1,4 @@
+
+# Claude Code local symlinks - never commit these
+.claude/agents
+.claude/skills
